@@ -1,0 +1,63 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using Web.App_LocalResources
+@model PagedList.IPagedList<Web.Models.Category>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <p>
+            @Html.ActionLink(Category.Create, "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Category.Name
+                </th>
+                <th>
+                    @Category.Description
+                </th>
+                <th></th>
+            </tr>
+    
+            @foreach (dynamic item in ViewBag.CategoryListPage)
+            {
+                <tr>
+                    <td class="col-md-1">
+                        @item.Name
+                    </td>
+                    <td class="col-md-1">
+                        <a data-toggle="tooltip" data-placement="top" data-original-title="@item.Description" href="#">
+                            @item.Description
+                        </a>
+                    </td>
+                    <td class="col-md-1">
+
+                        <button class="btn btn-xs btn-primary" type="button" onclick="location.href='@Url.Action("Edit", "Categories", new { id = item.Id })'">
+                            <i class="glyphicon glyphicon-edit"></i> Edit
+                        </button>
+
+                        <button class="btn btn-xs btn-success" type="button" onclick="location.href='@Url.Action("Index", "Dashboard", new { id = item.Id })'">
+                            <i class="glyphicon glyphicon-eye-open"></i> Details
+                        </button>
+                       
+                        <button class="btn btn-xs btn-danger" type="button" data-action="@Url.Action("Delete", "Categories", new { id = item.Id })" data-toggle="modal" data-target="#confirmDelete" data-title="Delete category @item.Name" data-message="Are you sure you want to delete this category ?">
+                            <i class="glyphicon glyphicon-trash"></i> Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+    
+        </table>
+        <!-- output a paging control that lets the user navigation to the previous page, next page, etc -->
+        @Html.PagedListPager((IPagedList) ViewBag.CategoryListPage, page => Url.Action("Index", new {page}))
+    
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        </script>
+
+@{Html.RenderPartial("DeleteConfirmationDialog");}
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b46772ee60364807aa917dc2fe3fe501" Name="Diagram1" >
+        <EntityTypeShape EntityType="PriceDB1.Brand" Width="1.5" PointX="1.875" PointY="0.875" />
+        <EntityTypeShape EntityType="PriceDB1.Category" Width="1.5" PointX="4.625" PointY="1.125" />
+        <EntityTypeShape EntityType="PriceDB1.Seller" Width="1.5" PointX="3.125" PointY="2.875" />
+        <EntityTypeShape EntityType="PriceDB1.Product" Width="1.5" PointX="0.75" PointY="3.125" />
+        <AssociationConnector Association="PriceDB1.BrandCategory" />
+        <AssociationConnector Association="PriceDB1.ProductBrand" />
+        <EntityTypeShape EntityType="PriceDB1.PriceLog" Width="1.5" PointX="7.25" PointY="1.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

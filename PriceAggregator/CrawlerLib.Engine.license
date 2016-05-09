@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<license>
+  <issued>2015-01-23 07:56:58Z</issued>
+  <granted>engine-anonymous.1</granted>
+  <updates>3000-01-01 00:00:00Z</updates>
+  <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+    <SignedInfo>
+      <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+      <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+      <Reference URI="">
+        <Transforms>
+          <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+        </Transforms>
+        <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <DigestValue>cI6jCID8BBNDnPIeQBKwn3LebMI=</DigestValue>
+      </Reference>
+    </SignedInfo>
+    <SignatureValue>Q2FEt0UknWPILljwRRtM5bsGs6oVMKf8IuRJow32auuje7xwvMXjX4PgPxyk4pwFHTgjGUnqvkUCVMgii1LM68J7v1d/QfUJ9v8KJeU3fq73vfQIlqysyaDftvcdMW7PQm+k2tDyBb3eCXhQsAfqbxMirWYCIFCIcSvVDXASYdo=</SignatureValue>
+  </Signature>
+</license>

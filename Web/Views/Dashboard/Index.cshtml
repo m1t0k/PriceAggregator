@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Web.Models.RrpViolationReport>
+@using Web.Models
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DashboardView</title>
+</head>
+<body>
+    <div>
+            @Html.Partial("RrpViolationReportView",ViewBag.ViolationReport as string)
+            @Html.Partial("RrpSituationReportView",ViewBag.SituationReport as string)
+    </div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+@using PriceAggregator.Areas.HelpPage.ModelDescriptions
+@model PriceAggregator.Areas.HelpPage.ModelDescriptions.CollectionModelDescription
+@if (Model.ElementDescription is ComplexTypeModelDescription)
+{
+    @Html.DisplayFor(m => m.ElementDescription)
+}
