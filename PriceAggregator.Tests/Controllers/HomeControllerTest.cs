@@ -1,7 +1,6 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PriceAggregator;
-using PriceAggregator.Controllers;
+
 
 namespace PriceAggregator.Tests.Controllers
 {

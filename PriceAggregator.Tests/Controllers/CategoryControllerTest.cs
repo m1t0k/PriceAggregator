@@ -2,13 +2,7 @@
 using System.Collections.Generic;
 using System.Web.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PriceAggregator;
-using PriceAggregator.Controllers;
-using PriceAggregator.Core.Repository.MsSql;
-using PriceAggregator.Core.Entities;
-using PriceAggregator.Core.ExceptionHandling;
-using PriceAggregator.Core.Filters;
-using PriceAggregator.Core.Repository.MsSql;
+
 
 namespace PriceAggregator.Tests.Controllers
 {
