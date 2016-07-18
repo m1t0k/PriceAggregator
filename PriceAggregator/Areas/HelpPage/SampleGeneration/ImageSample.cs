@@ -1,15 +1,14 @@
 using System;
 
-namespace PriceAggregator.Areas.HelpPage
+namespace Web.Dictionary.Areas.HelpPage
 {
     /// <summary>
-    ///     This represents an image sample on the help page. There's a display template named ImageSample associated with this
-    ///     class.
+    /// This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
     /// </summary>
     public class ImageSample
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="ImageSample" /> class.
+        /// Initializes a new instance of the <see cref="ImageSample"/> class.
         /// </summary>
         /// <param name="src">The URL of an image.</param>
         public ImageSample(string src)
@@ -25,7 +24,7 @@ namespace PriceAggregator.Areas.HelpPage
 
         public override bool Equals(object obj)
         {
-            var other = obj as ImageSample;
+            ImageSample other = obj as ImageSample;
             return other != null && Src == other.Src;
         }
 

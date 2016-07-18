@@ -11,6 +11,9 @@ namespace Crowler.Core.Actors
     {
         protected override void OnReceive(object message)
         {
+            if (message == null) throw new NullReferenceException(nameof(message));
+
+           
             if (message is ProductRequestMessage)
             {
                 var request = (ProductRequestMessage) message;

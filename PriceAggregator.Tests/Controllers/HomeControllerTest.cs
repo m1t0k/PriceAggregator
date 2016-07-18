@@ -17,7 +17,7 @@ namespace PriceAggregator.Tests.Controllers
             ViewResult result = controller.Index() as ViewResult;
 
             // Assert
-            Assert.IsNotNull(result);
+            Assert.IsNotNull(result;)
             Assert.AreEqual("Home Page", result.ViewBag.Title);*/
         }
     }

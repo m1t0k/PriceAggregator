@@ -1,10 +1,9 @@
 using System;
 
-namespace PriceAggregator.Areas.HelpPage
+namespace Web.Dictionary.Areas.HelpPage
 {
     /// <summary>
-    ///     This represents a preformatted text sample on the help page. There's a display template named TextSample associated
-    ///     with this class.
+    /// This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
     /// </summary>
     public class TextSample
     {
@@ -21,7 +20,7 @@ namespace PriceAggregator.Areas.HelpPage
 
         public override bool Equals(object obj)
         {
-            var other = obj as TextSample;
+            TextSample other = obj as TextSample;
             return other != null && Text == other.Text;
         }
 

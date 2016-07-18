@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Web.Models
+namespace PriceAggregator.Web.Models
 {
     public class ExternalLoginConfirmationViewModel
     {

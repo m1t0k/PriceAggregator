@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Web.Http.Routing;
-using PriceAggregator.Core.Entities;
+using PriceAggregator.Core.DataEntity;
 
 namespace PriceAggregator.Core.ExceptionHandling
 {

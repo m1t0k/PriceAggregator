@@ -1,8 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using PriceAggregator.Web;
 
-[assembly: OwinStartupAttribute(typeof(Web.Startup))]
-namespace Web
+[assembly: OwinStartup(typeof(Startup))]
+namespace PriceAggregator.Web
 {
     public partial class Startup
     {

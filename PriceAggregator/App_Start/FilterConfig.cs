@@ -1,6 +1,4 @@
 ﻿using System.Web.Mvc;
-using PriceAggregator.Core.ExceptionHandling;
-using PriceAggregator.Core.Filters;
 
 namespace PriceAggregator
 {

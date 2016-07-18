@@ -6,8 +6,6 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using PriceAggregator.Core.Ioc;
-using PriceAggregator.Core.Repository;
-using PriceAggregator.Core.Repository.Initialization;
 
 namespace PriceAggregator
 {
@@ -19,8 +17,7 @@ namespace PriceAggregator
             {
                 Trace.TraceInformation("App is being started..");
 
-                AutofacIoc.Configure();
-                DataCache.InitializeOnStartup();
+                SimpleInjectorIoC.Configure();
 
                 AreaRegistration.RegisterAllAreas();
                 GlobalConfiguration.Configure(WebApiConfig.Register);

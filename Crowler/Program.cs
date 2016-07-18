@@ -16,7 +16,7 @@ namespace Crowler
 
         private static void Main(string[] args)
         {
-            if (args[0].Equals("-s"))
+            if (args.Length==0 || args[0].Equals("-s"))
                 Akka_Send();
             if (args[0].Equals("-c"))
                 Akka_Recieve();

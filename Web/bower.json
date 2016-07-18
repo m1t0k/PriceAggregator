@@ -1,0 +1,7 @@
+{
+  "name": "myproject",
+  "dependencies": {
+    "angularUtils-pagination": "angular-utils-pagination#~0.11.1",
+    "angular-confirm-modal": "^1.2.5"
+  }
+}

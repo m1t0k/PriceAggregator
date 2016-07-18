@@ -5,6 +5,6 @@ namespace Crowler.Core.Actors
 {
     public abstract class BaseActor : UntypedActor
     {
-        protected ILoggingAdapter Logger = Context.GetLogger();
+        protected ILoggingAdapter Logger { get; } = Context.GetLogger();
     }
 }

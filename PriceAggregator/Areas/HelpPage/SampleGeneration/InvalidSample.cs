@@ -1,10 +1,9 @@
 using System;
 
-namespace PriceAggregator.Areas.HelpPage
+namespace Web.Dictionary.Areas.HelpPage
 {
     /// <summary>
-    ///     This represents an invalid sample on the help page. There's a display template named InvalidSample associated with
-    ///     this class.
+    /// This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
     /// </summary>
     public class InvalidSample
     {
@@ -21,7 +20,7 @@ namespace PriceAggregator.Areas.HelpPage
 
         public override bool Equals(object obj)
         {
-            var other = obj as InvalidSample;
+            InvalidSample other = obj as InvalidSample;
             return other != null && ErrorMessage == other.ErrorMessage;
         }
 

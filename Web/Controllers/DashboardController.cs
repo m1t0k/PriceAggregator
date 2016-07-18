@@ -1,75 +1,120 @@
 ﻿using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
+using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using PriceAggregator.Core.Libraries.Logging;
+using PagedList;
+using PriceAggergator.Core.Logging.Inteface;
+using PriceAggregator.Core.DataEntity;
+using PriceAggregator.Core.DictionaryProvider.Interfaces;
+using PriceAggregator.Core.Logging;
 
-namespace Web.Controllers
+namespace PriceAggregator.Web.Controllers
 {
     public class DashboardController : Controller
     {
-        // GET: Dashboard
-        public ActionResult Index(int id)
+        private readonly IDictionaryProvider<Category> _categoryProvider;
+        private ILoggingService _logger;
+
+        public DashboardController(IDictionaryProvider<Category> categoryProvider, ILoggingService logger)
         {
-            var violation = GetViolationReport(id);
-            var situation = GetSituationReport(id);
-            
-            ViewData["ViolationReport"] = violation;
-            ViewData["SituationReport"] = situation;
+            if (categoryProvider == null)
+                throw new ArgumentNullException(nameof(categoryProvider));
 
+            if (logger == null)
+                throw new ArgumentNullException(nameof(logger));
 
-            var log= new NLogLoggingService();
+            _categoryProvider = categoryProvider;
+            _logger = logger;
+        }
 
-            log.Error("====================================");
-            log.Error(violation);
-            log.Error(situation);
-            log.Error("====================================");
+        // GET: Categories
+        public async Task<ActionResult> Index(int? page)
+        {
+            /*const int pageSize = 10;
+            var pageNumber = page ?? 1;
+            var list = await _categoryProvider.GetListAsync(pageNumber, pageSize, "");
 
+            ViewBag.CategoryListPage = list.ToPagedList(pageNumber, pageSize);*/
 
-            return View();
+            return View("Index");
+        }
+
+        // GET: Categories/Details/5
+        public ActionResult Details(int id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            return RedirectToAction("Index", "Dashboard", new {categoryId = id});
+        }
+
+        // GET: Categories/Create
+        public ActionResult Create()
+        {
+            return View("Create");
+        }
+
+        // POST: Categories/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name,Description")] Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _categoryProvider.CreateItem(category);
+                return RedirectToAction("Index");
+            }
+
+            return View("Create");
+        }
+
+        // GET: Categories/Edit/5
+        public ActionResult Edit(int id)
+        {
+            var category = _categoryProvider.GetItem(id);
+            if (category == null)
+            {
+                return HttpNotFound();
+            }
+            return View("Edit",category);
+        }
+
+        // POST: Categories/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name,Description")] Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                _categoryProvider.UpdateItem(category);
+                return RedirectToAction("Index");
+            }
+            return View("Index");
         }
 
 
-        private static string GetViolationReport(int categoryId)
+        // POST: Categories/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            string result = String.Empty;
+            var logger = new NLogLoggingService();
 
-            using (var client = new HttpClient())
+            logger.Debug("Delete categiry Id = " + id);
+
+            if (id == null)
             {
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                // New code:
-                HttpResponseMessage response = client.GetAsync(
-                    new Uri(String.Format("http://localhost:54919/api/report/violation/{0}", categoryId))).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    result = response.Content.ReadAsStringAsync().Result;
-                }
-
-                return result;
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-        }
-
-        private static string GetSituationReport(int categoryId)
-        {
-            string result = String.Empty;
-
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-                // New code:
-                HttpResponseMessage response = client.GetAsync(
-                    new Uri(String.Format("http://localhost:54919/api/report/situation/{0}", categoryId))).Result;
-                if (response.IsSuccessStatusCode)
-                {
-                    result = response.Content.ReadAsStringAsync().Result;
-                }
-
-                return result;
-            }
+            _categoryProvider.DeleteItem(id);
+            return RedirectToAction("Index");
         }
     }
 }

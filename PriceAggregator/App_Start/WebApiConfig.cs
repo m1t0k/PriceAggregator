@@ -1,10 +1,9 @@
-﻿using System.Net.Http.Formatting;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using System.Web.Http.Routing;
-using CacheCow.Server;
 using Microsoft.Owin.Security.OAuth;
 using PriceAggregator.Core.ExceptionHandling;
+using Web.Api.Common.Core.ExceptionHandling;
 
 namespace PriceAggregator
 {
@@ -12,9 +11,9 @@ namespace PriceAggregator
     {
         public static void Register(HttpConfiguration config)
         {
-            JsonMediaTypeFormatter json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
             json.UseDataContractJsonSerializer = false;
-            XmlMediaTypeFormatter xml = GlobalConfiguration.Configuration.Formatters.XmlFormatter;
+            var xml = GlobalConfiguration.Configuration.Formatters.XmlFormatter;
             xml.UseXmlSerializer = false;
             config.Formatters.Clear();
             config.Formatters.Add(json);
@@ -27,11 +26,11 @@ namespace PriceAggregator
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             var constraintResolver = new DefaultInlineConstraintResolver();
-            constraintResolver.ConstraintMap.Add("pricetaskstatus", typeof (PriceTaskStatusConstraint));
+            constraintResolver.ConstraintMap.Add("pricetaskstatus", typeof(PriceTaskStatusConstraint));
             config.MapHttpAttributeRoutes(constraintResolver);
 
-            config.Services.Replace(typeof (IExceptionHandler), new GlobalExecutionErrorHandler());
-            config.Services.Add(typeof (IExceptionLogger), new GlobalExceptionLogger());
+            config.Services.Replace(typeof(IExceptionHandler), new GlobalExecutionErrorHandler());
+            config.Services.Add(typeof(IExceptionLogger), new GlobalExceptionLogger());
             //var cachingHandler = new CachingHandler(new HttpConfiguration(), new InMemoryEntityTagStore());
 
 
