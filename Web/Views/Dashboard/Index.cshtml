@@ -2,80 +2,12 @@
 @using PriceAggregator.Web.Core
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
- <!--   <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap-tpls.js"></script>
-script src="http://schlogen.github.io/angular-confirm/javascripts/angular-confirm.js"></!--script>
--->
-<script src="~/Scripts/app/services/CategoryFactory.js"></script>
-<script src="~/Scripts/app/controllers/CategoryController.js"></script>
+    <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.3.2/ui-bootstrap-tpls.js"></script>
+    script src="http://schlogen.github.io/angular-confirm/javascripts/angular-confirm.js"></!--script>
+    -->
 }
 
-
-<div ng-controller="CategoryController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl')">
-
-    <div>
-        <select ng-model="pageSize"  ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
-    </div>
-
-
-    <p>
-        <button class="btn btn-xs btn-primary" type="button" ng-click="openEditDialog()" data-title="Edit category {{ category.Name}}">
-            <i class="glyphicon glyphicon-create"></i> Create
-        </button>
-    </p>
-
-
-    <table class="table">
-        <tr>
-            <td colspan="3">
-                <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
-                                         on-page-change="changePageIndex(newPageNumber)">
-                </dir-pagination-controls>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <a href="#" ng-click="changeSortName('Name')">@Category.Name</a>
-            </th>
-            <th>
-                <a href="#" ng-click="changeSortName('Description')">
-                    @Category.Description
-                </a>
-            </th>
-            <th></th>
-        </tr>
-
-
-        <tr dir-paginate="category in categoryList | itemsPerPage: pageSize"
-            current-page="pageIndex" total-items="categoryCount">
-            <td class="col-md-1">
-                {{ category.Name}}
-            </td>
-            <td class="col-md-1">
-
-                {{ category.Description}}
-
-            </td>
-            <td class="col-md-1">
-
-                <button class="btn btn-xs btn-primary" type="button" ng-click="openEditDialog(category)" data-title="Edit category {{ category.Name}}">
-                    <i class="glyphicon glyphicon-edit"></i> Edit
-                </button>
-
-
-                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteCategory(category.Id,'Are you sure to delete category '+ category.Name + '?')" >
-                    <i class="glyphicon glyphicon-trash"></i> Delete
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
-                                         on-page-change="changePageIndex(newPageNumber)">
-                </dir-pagination-controls>
-            </td>
-        </tr>
-    </table>
-
-    @{ Html.RenderPartial("Edit"); }
+<div class="container">
+    <ng-view></ng-view>
 
 </div>

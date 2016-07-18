@@ -1,0 +1,72 @@
+﻿@using PriceAggregator.Web.App_LocalResources
+@using PriceAggregator.Web.Core
+
+<div ng-controller="DashboardController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl')">
+
+    <div>
+        <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
+    </div>
+    <div>
+        <select ng-model="type" ng-options="x for x in typeList" ng-change="changeType()" ></select>
+    </div>
+
+    <p>
+        <button class="btn btn-xs btn-primary" type="button" ng-click="openEditDialog()" data-title="Edit category {{ category.Name}}">
+            <i class="glyphicon glyphicon-create"></i> Create
+        </button>
+    </p>
+
+    <table class="table">
+        <tr>
+            <td colspan="3">
+                <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
+                                         on-page-change="changePageIndex(newPageNumber)">
+                </dir-pagination-controls>
+            </td>
+        </tr>
+        <tr>
+            <th>
+                <a href="#" ng-click="changeSortName('Name')">@Category.Name</a>
+            </th>
+            <th>
+                <a href="#" ng-click="changeSortName('Description')">
+                    @Category.Description
+                </a>
+            </th>
+            <th></th>
+        </tr>
+
+
+        <tr dir-paginate="item in itemList | itemsPerPage: pageSize"
+            current-page="pageIndex" total-items="itemCount">
+            <td class="col-md-1">
+                {{ item.Name}}
+            </td>
+            <td class="col-md-1">
+
+                {{ item.Description}}
+
+            </td>
+            <td class="col-md-1">
+
+                <button class="btn btn-xs btn-primary" type="button" ng-click="openEditDialog(item)" data-title="Edit category {{ item.Name}}">
+                    <i class="glyphicon glyphicon-edit"></i> Edit
+                </button>
+
+
+                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteCategory(item.Id,'Are you sure to delete category '+ item.Name + '?')">
+                    <i class="glyphicon glyphicon-trash"></i> Delete
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
+                                         on-page-change="changePageIndex(newPageNumber)">
+                </dir-pagination-controls>
+            </td>
+        </tr>
+    </table>
+
+
+</div>

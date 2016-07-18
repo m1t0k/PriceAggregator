@@ -1,16 +1,24 @@
-﻿angular.
-  module('phonecatApp').
-  config(['$locationProvider', '$routeProvider',
+﻿"use strict";
+app.config([
+    "$locationProvider", "$routeProvider",
     function config($locationProvider, $routeProvider) {
-        $locationProvider.hashPrefix('!');
+        $locationProvider.hashPrefix("!");
 
-        $routeProvider.when('/phones',
-            {
-                template: '<phone-list></phone-list>'
-            })
-            .when('/phones/:phoneId',
-            {
-                template: '<phone-detail></phone-detail>'
-            });
+        $routeProvider.when("/",
+        {
+            templateUrl: "/AngularTemplates/Inline?templateName=DashboardList",
+            controller: "DashboardController",
+            controllerAs: "PaWeb"
+        }).when("/create",
+        {
+            templateUrl: "/AngularTemplates/Inline?templateName=Create",
+            controller: "DashboardController",
+            controllerAs: "PaWeb"
+        }).when("/edit",
+        {
+            templateUrl: "/AngularTemplates/Inline?templateName=Edit",
+            controller: "DashboardController",
+            controllerAs: "PaWeb"
+        });
     }
-  ]);
+]);

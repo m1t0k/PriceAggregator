@@ -1,20 +1,23 @@
 ﻿"use strict";
 
-app.factory("categoryFactory",
+app.factory("dictionaryFactory",
 [
     "$http", function($http) {
         delete $http.defaults.headers.common["X-Requested-With"];
 
         var factory = {};
-        factory.categoryList = null;
-        factory.categoryCount = 0;
+        factory.typeList = null;
+        factory.itemList = null;
+        factory.itemCount = 0;
         factory.baseUrl = "";
 
 
-        factory.getCategoryList = function(pageIndex, pageSize, sortName) {
+        factory.getList = function(type, pageIndex, pageSize, sortName) {
 
             return $http.get(factory.baseUrl +
-                    "/category/list/" +
+                    "/" +
+                    type +
+                    "/list/" +
                     pageIndex +
                     "/" +
                     pageSize +
@@ -22,16 +25,31 @@ app.factory("categoryFactory",
                     encodeURIComponent(sortName))
                 .success(function(data) {
                     // magic line, we resolve the data IN the factory!
-                    factory.categoryList = data;
+                    factory.itemList = data;
                 })
                 .error(function() {
-                    factory.categoryList = [];
+                    factory.itemList = [];
                 });
         };
 
-        factory.getCategory = function(id) {
+        factory.getTypes = function() {
+
             return $http.get(factory.baseUrl +
-                    "/category/" +
+                    "/types")
+                .success(function(data) {
+                    // magic line, we resolve the data IN the factory!
+                    factory.typeList = data;
+                })
+                .error(function() {
+                    return [];
+                });;
+        };
+
+        factory.getItem = function(type, id) {
+            return $http.get(factory.baseUrl +
+                    "/" +
+                    type +
+                    "/" +
                     id)
                 .success(function(data) {
                     // magic line, we resolve the data IN the factory!
@@ -42,9 +60,11 @@ app.factory("categoryFactory",
                 });
         };
 
-        factory.createCategory = function(item) {
+        factory.createItem = function(type, item) {
             return $http.post(factory.baseUrl +
-                    "/category/",
+                    "/" +
+                    type +
+                    "/",
                     item)
                 .success(function(data) {
                     // magic line, we resolve the data IN the factory!
@@ -55,9 +75,11 @@ app.factory("categoryFactory",
                 });
         };
 
-        factory.updateCategory = function(item) {
+        factory.updateItem = function(type, item) {
             return $http.put(factory.baseUrl +
-                    "/category/" +
+                    "/" +
+                    type +
+                    "/" +
                     item.Id,
                     item)
                 .success(function(data) {
@@ -69,9 +91,11 @@ app.factory("categoryFactory",
                 });
         };
 
-        factory.deleteCategory = function(id) {
+        factory.deleteItem = function(type, id) {
             return $http.delete(factory.baseUrl +
-                    "/category/" +
+                    "/" +
+                    type +
+                    "/" +
                     id)
                 .success(function(data) {
                     // magic line, we resolve the data IN the factory!
@@ -82,15 +106,17 @@ app.factory("categoryFactory",
                 });
         };
 
-        factory.getCategoryCount = function() {
+        factory.getCount = function(type) {
             return $http.get(factory.baseUrl +
-                    "/category/list/count")
+                    "/" +
+                    type +
+                    "/list/count")
                 .success(function(data) {
                     // magic line, we resolve the data IN the factory!
-                    factory.categoryCount = data;
+                    factory.itemCount = data;
                 })
                 .error(function() {
-                    factory.categoryCount = 0;
+                    factory.itemCount = 0;
                 });
         };
 
