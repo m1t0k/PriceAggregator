@@ -1,8 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 using CacheManager.Core;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.DataHandler;
+using Microsoft.Owin.Security.DataHandler.Encoder;
+using Microsoft.Owin.Security.DataHandler.Serializer;
+using Microsoft.Owin.Security.DataProtection;
 using PriceAggergator.Core.Logging.Inteface;
 using PriceAggregator.Core.DataAccess;
 using PriceAggregator.Core.DataAccess.Interfaces;
@@ -14,6 +23,7 @@ using PriceAggregator.Core.DictionaryProvider.Interfaces;
 using PriceAggregator.Core.Logging;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
+using Web.Dictionary.Models;
 
 namespace Web.Dictionary.Ioc
 {
@@ -42,8 +52,6 @@ namespace Web.Dictionary.Ioc
             container.Options.DefaultScopedLifestyle = scope;
 
             var dataEntities = GetDataEntities();
-            // register models
-
             var lazyType = typeof(Lazy<>);
 
             foreach (var type in dataEntities)
@@ -65,18 +73,22 @@ namespace Web.Dictionary.Ioc
                 var factoryMethod = redisFactoryType.GetMethod("CreateRedisInstance");
 
                 container.Register(lazyCacheType,
-                    () => factoryMethod.Invoke(container.GetInstance(redisFactoryType), null), scope);
+                    () => factoryMethod.Invoke(container.GetInstance(redisFactoryType), null), Lifestyle.Singleton);
             }
-
+            //container.Register<ApplicationUser>(scope);
+            //container.Register(typeof(IUserStore<ApplicationUser>),scope);
             container.Register<ISupportedDataEntities, SupportedDataEntities>(Lifestyle.Singleton);
+
             container.Register<ILoggingService, NLogLoggingService>(scope);
             container.Register(() => new Lazy<ILoggingService>(container.GetInstance<ILoggingService>), scope);
             container.Register(typeof(IDictionaryProvider<>), typeof(DictionaryProvider<>), scope);
 
+            //container.Register(typeof(IUserStore<>),typeof(UserStore<>),scope);
+            container.Register<ApplicationUser>(scope);
+            container.Register<ApplicationDbContext>(scope);
+            
             // This is an extension method from the integration package.
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
-
-
             container.Verify();
 
             GlobalConfiguration.Configuration.DependencyResolver =

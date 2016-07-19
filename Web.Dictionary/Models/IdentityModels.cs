@@ -21,7 +21,7 @@ namespace Web.Dictionary.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("PriceAggregator", throwIfV1Schema: false)
         {
         }
         

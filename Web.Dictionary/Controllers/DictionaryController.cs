@@ -13,6 +13,7 @@ namespace Web.Dictionary.Controllers
 {
     [EnableCors("*", "*", "*")]
     [RoutePrefix("api/dictionary")]
+    //[Authorize]
     public class DictionaryController : BaseController
     {
         private IHttpActionResult DynamicExecute(string typeName, string methodName, object[] parameters,
@@ -106,6 +107,7 @@ namespace Web.Dictionary.Controllers
         {
             return DynamicExecute(typeName, "CreateItem", null, item);
         }
+
 
         [Route("{typeName:alpha}/{id:int}")]
         [HttpPut]
