@@ -4277,7 +4277,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Dashboard\Create.cshtml" />
-    <Content Include="Views\Dashboard\Edit.cshtml" />
+    <Content Include="Views\AngularTemplates\Templates\Edit.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Shared\DeleteConfirmationDialog.cshtml" />
     <None Include="Views\AngularTemplates\Templates\ValidationMessages.cshtml" />

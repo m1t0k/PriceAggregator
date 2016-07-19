@@ -1,14 +1,14 @@
 ﻿@using PriceAggregator.Web.App_LocalResources
 @model PriceAggregator.Core.DataEntity.Category
+
 @{
     Layout = null;
 }
 
-
 <!-- Modal Dialog -->
-<div id="EditCategoryDialog" title="@Category.EditCategoryTitle" 
+<div id="EditDialog" title="@Category.EditCategoryTitle" 
      >
-    <form name="EditCategoryForm">
+    <form name="EditForm">
 
         @Html.AntiForgeryToken()
 
@@ -23,7 +23,7 @@
                     <input type="text" id="Name" name="Name" class="form-control" ng-model="currentCategory.Name" required/>
 
                     <div ng-messages="EditCategoryForm.Name.$error"  class="text-danger" role="alert">
-                        <div ng-messages-include="/templates/ValidationMessages.html"></div>
+                        <div ng-messages-include="/AngularTemplates/Inline?templateName=ValidationMessages"></div>
                     </div>
 
                 </div>

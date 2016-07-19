@@ -1,6 +1,10 @@
 ﻿@using PriceAggregator.Web.App_LocalResources
 @using PriceAggregator.Web.Core
 
+@{
+    Layout = null;
+}
+
 <div ng-controller="DashboardController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl')">
 
     <div>
@@ -11,7 +15,7 @@
     </div>
 
     <p>
-        <button class="btn btn-xs btn-primary" type="button" ng-click="openEditDialog()" data-title="Edit category {{ category.Name}}">
+        <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('create')" data-title="Edit category {{ category.Name}}">
             <i class="glyphicon glyphicon-create"></i> Create
         </button>
     </p>
@@ -49,7 +53,7 @@
             </td>
             <td class="col-md-1">
 
-                <button class="btn btn-xs btn-primary" type="button" ng-click="openEditDialog(item)" data-title="Edit category {{ item.Name}}">
+                <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('edit')" data-title="Edit category {{ item.Name}}">
                     <i class="glyphicon glyphicon-edit"></i> Edit
                 </button>
 
