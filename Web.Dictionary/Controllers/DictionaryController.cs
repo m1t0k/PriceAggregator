@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using PriceAggregator.Core.DataEntity.Base;
+using PriceAggregator.Core.DictionaryProvider.Interfaces;
 using Web.Api.Common.Core.Filters;
 using Web.Dictionary.Controllers.Base;
 
@@ -22,15 +24,16 @@ namespace Web.Dictionary.Controllers
             {
                 return NotFound();
             }
-
+            
             var executor = new DictionaryDynamicExecutor(typeName);
             if (dictionaryItem != null)
             {
                 parameters = new[] {executor.DesserializeInstance(dictionaryItem.ToString())};
             }
             var result = executor.Execute(Configuration.DependencyResolver, methodName, parameters);
-
-            
+            if (executor.IsResultEmpty(result))
+                return NotFound();
+              
             return Ok(result);
         }
 

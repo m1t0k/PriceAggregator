@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -12,6 +13,7 @@ namespace Web.Dictionary.Controllers.Base
     public class DictionaryDynamicExecutor
     {
         private readonly Type _type;
+
 
         public DictionaryDynamicExecutor(string typeName)
         {
@@ -47,6 +49,28 @@ namespace Web.Dictionary.Controllers.Base
 
             var instance = dependencyResolver.GetService(genericType);
             return method.Invoke(instance, parameters);
+        }
+
+
+        public bool IsResultEmpty(object result)
+        {
+            if (result == null || (result is bool && !(bool) result))
+                return true;
+
+            var genericCollectionTemplate = typeof(IEnumerable<>);
+            var genericCollectionType = genericCollectionTemplate.MakeGenericType(_type);
+            if (!genericCollectionType.IsInstanceOfType(result)) return false;
+
+            var anyMethod = typeof(Enumerable)
+                .GetMethods(BindingFlags.Static | BindingFlags.Public)
+                .FirstOrDefault(mi => mi.Name == "Any");
+            // we need to specialize it 
+            if(anyMethod==null)
+                throw new ArgumentNullException(nameof(anyMethod));
+             
+            anyMethod = anyMethod.MakeGenericMethod(_type);
+
+            return !(bool) anyMethod.Invoke(null, new object[] {result});
         }
     }
 }

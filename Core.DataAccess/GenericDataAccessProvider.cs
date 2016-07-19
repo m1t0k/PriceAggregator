@@ -128,7 +128,7 @@ namespace PriceAggregator.Core.DataAccess
             return await GetListInternal(pageIndex, pageSize, sortName, acsending).ToListAsync().ConfigureAwait(false);
         }
 
-        public void CreateItem(T item)
+        public int CreateItem(T item)
         {
             try
             {
@@ -136,7 +136,7 @@ namespace PriceAggregator.Core.DataAccess
                     throw new ArgumentNullException(nameof(item));
 
                 Items.Add(item);
-                SaveChanges();
+                return SaveChanges();
             }
             catch (UpdateException e)
             {
@@ -156,7 +156,7 @@ namespace PriceAggregator.Core.DataAccess
             }
         }
 
-        public void CreateItems(IEnumerable<T> items)
+        public int CreateItems(IEnumerable<T> items)
         {
             try
             {
@@ -165,7 +165,7 @@ namespace PriceAggregator.Core.DataAccess
                 Configuration.AutoDetectChangesEnabled = false;
                 Items.AddRange(items);
                 Configuration.AutoDetectChangesEnabled = true;
-                SaveChanges();
+                return SaveChanges();
             }
             catch (UpdateException e)
             {
@@ -212,7 +212,7 @@ namespace PriceAggregator.Core.DataAccess
             }
         }
 
-        public void UpdateItem(T item)
+        public int UpdateItem(T item)
         {
             try
             {
@@ -222,7 +222,7 @@ namespace PriceAggregator.Core.DataAccess
                 if (Entry(item).State == EntityState.Detached)
                     Items.Attach(item);
                 Entry(item).State = EntityState.Modified;
-                SaveChanges();
+                return SaveChanges();
             }
             catch (UpdateException e)
             {
@@ -296,16 +296,16 @@ namespace PriceAggregator.Core.DataAccess
             }
         }
 
-        public void DeleteItem(int id)
+        public int DeleteItem(int id)
         {
             try
             {
                 var item = Items.Find(id);
 
-                if (item == null) return;
+                if (item == null) return 0;
 
                 Items.Remove(item);
-                SaveChanges();
+                return SaveChanges();
             }
             catch (ObjectDoesNotExistException)
             {

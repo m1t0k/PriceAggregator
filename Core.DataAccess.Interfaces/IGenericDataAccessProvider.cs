@@ -11,9 +11,10 @@ namespace PriceAggregator.Core.DataAccess.Interfaces
         IEnumerable<T> SqlQuery(string sqlQuery, params object[] parameters);
         T GetItem(int id);
         int GetCount();
-        void CreateItem(T item);
-        void UpdateItem(T item);
-        void DeleteItem(int id);
+        int CreateItem(T item);
+        int UpdateItem(T item);
+        int DeleteItem(int id);
+        int CreateItems(IEnumerable<T> items);
 
         Task<IEnumerable<T>> GetListAsync(int? pageIndex, int? pageSize, string sortName, bool acsending);
         Task<IEnumerable<T>> SqlQueryAsync(string sqlQuery, params object[] parameters);

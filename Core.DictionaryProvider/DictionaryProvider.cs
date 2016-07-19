@@ -51,16 +51,17 @@ namespace PriceAggregator.Core.DictionaryProvider
             }
         }
 
-        public void CreateItem(T item)
+        public bool CreateItem(T item)
         {
             try
             {
                 if (item == null)
                     throw new ArgumentNullException(nameof(item));
 
-                DbContext.CreateItem(item);
-                if (CacheManager.IsValueCreated)
+                var result=DbContext.CreateItem(item)>0;
+                if (result && CacheManager.IsValueCreated)
                     CacheManager.Value.Add(GenerateKey(item.Id), item);
+                return result;
             }
             catch (Exception e)
             {
@@ -69,16 +70,19 @@ namespace PriceAggregator.Core.DictionaryProvider
             }
         }
 
-        public void UpdateItem(T item)
+        public bool UpdateItem(T item)
         {
             try
             {
                 if (item == null)
                     throw new ArgumentNullException(nameof(item));
 
-                DbContext.UpdateItem(item);
-                if (CacheManager.IsValueCreated)
-                    CacheManager.Value.AddOrUpdate(GenerateKey(item.Id), item, v => item);
+                var result=DbContext.UpdateItem(item)>0;
+                
+                    if (result && CacheManager.IsValueCreated)
+                        CacheManager.Value.AddOrUpdate(GenerateKey(item.Id), item, v => item);
+                
+                return result;
             }
             catch (Exception e)
             {
@@ -87,13 +91,14 @@ namespace PriceAggregator.Core.DictionaryProvider
             }
         }
 
-        public void DeleteItem(int id)
+        public bool DeleteItem(int id)
         {
             try
             {
-                DbContext.DeleteItem(id);
-                if (CacheManager.IsValueCreated)
+                var result=DbContext.DeleteItem(id)>0;
+                if (result && CacheManager.IsValueCreated)
                     CacheManager.Value.Remove(GenerateKey(id));
+                return result;
             }
             catch (Exception e)
             {

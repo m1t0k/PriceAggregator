@@ -20,6 +20,7 @@ namespace PriceAggregator.Core.DataAccess
             {
                 base.OnModelCreating(modelBuilder);
                 modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
                 modelBuilder.Entity<Category>().HasKey(t => t.Id);
                 modelBuilder.Entity<Category>().Property(t => t.Id)
                     .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
