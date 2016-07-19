@@ -18,14 +18,14 @@ namespace Web.Dictionary.Controllers
         private IHttpActionResult DynamicExecute(string typeName, string methodName, object[] parameters,
             object dictionaryItem = null)
         {
-            var types = GetSupportedTypes();
+            var types = GetSupportedTypes(Configuration);
             if (
                 types.All(type => string.Compare(type.Name, typeName, StringComparison.InvariantCultureIgnoreCase) != 0))
             {
                 return NotFound();
             }
             
-            var executor = new DictionaryDynamicExecutor(typeName);
+            var executor = new DictionaryDynamicExecutor(typeName, types);
             if (dictionaryItem != null)
             {
                 parameters = new[] {executor.DesserializeInstance(dictionaryItem.ToString())};
@@ -41,15 +41,15 @@ namespace Web.Dictionary.Controllers
         [HttpGet]
         public IHttpActionResult GetTypes()
         {
-            var list = GetSupportedTypes();
+            var list = GetSupportedTypes(Configuration);
 
             return Ok(list.Select(t => t.Name));
         }
 
-        private IEnumerable<Type> GetSupportedTypes()
+        private  IEnumerable<Type> GetSupportedTypes(HttpConfiguration configuration)
         {
             var service =
-                (ISupportedDataEntities) Configuration.DependencyResolver.GetService(typeof(ISupportedDataEntities));
+                (ISupportedDataEntities) configuration.DependencyResolver.GetService(typeof(ISupportedDataEntities));
             var list = service.GetSupportedDataEntities();
             return list;
         }

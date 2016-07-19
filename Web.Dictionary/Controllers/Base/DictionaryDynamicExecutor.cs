@@ -15,13 +15,16 @@ namespace Web.Dictionary.Controllers.Base
         private readonly Type _type;
 
 
-        public DictionaryDynamicExecutor(string typeName)
+        public DictionaryDynamicExecutor(string typeName, IEnumerable<Type> supportedTypes
+    )
         {
             if (string.IsNullOrWhiteSpace(typeName))
                 throw new ArgumentNullException(nameof(typeName));
 
-            var assembly = Assembly.GetAssembly(typeof(Category));
-            _type = assembly.GetTypes()
+            if (supportedTypes==null)
+                throw new ArgumentNullException(nameof(supportedTypes));
+
+            _type = supportedTypes
                 .FirstOrDefault(
                     item => string.Compare(item.Name, typeName, StringComparison.InvariantCultureIgnoreCase) == 0);
 
@@ -46,6 +49,8 @@ namespace Web.Dictionary.Controllers.Base
             var template = typeof(IDictionaryProvider<>);
             var genericType = template.MakeGenericType(_type);
             var method = genericType.GetMethod(methodName);
+            if (method == null)
+                throw new NullReferenceException(nameof(method));
 
             var instance = dependencyResolver.GetService(genericType);
             return method.Invoke(instance, parameters);
@@ -66,7 +71,7 @@ namespace Web.Dictionary.Controllers.Base
                 .FirstOrDefault(mi => mi.Name == "Any");
             // we need to specialize it 
             if(anyMethod==null)
-                throw new ArgumentNullException(nameof(anyMethod));
+                throw new NullReferenceException(nameof(anyMethod));
              
             anyMethod = anyMethod.MakeGenericMethod(_type);
 
