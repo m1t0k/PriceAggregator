@@ -53,12 +53,12 @@
             </td>
             <td class="col-md-1">
 
-                <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('edit')" data-title="Edit category {{ item.Name}}">
+                <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('edit',item)" data-title="Edit category {{ item.Name}}">
                     <i class="glyphicon glyphicon-edit"></i> Edit
                 </button>
 
 
-                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteCategory(item.Id,'Are you sure to delete category '+ item.Name + '?')">
+                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteItem(item.Id,'Are you sure to delete category '+ item.Name + '?')">
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </button>
             </td>

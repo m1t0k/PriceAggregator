@@ -6,8 +6,7 @@
 }
 
 <!-- Modal Dialog -->
-<div id="EditDialog" title="@Category.EditCategoryTitle" 
-     >
+<div id="EditDialog" title="@Category.EditCategoryTitle" ng-controller="DashboardController">
     <form name="EditForm">
 
         @Html.AntiForgeryToken()
@@ -20,7 +19,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-3"})
                 <div class="col-md-9">
-                    <input type="text" id="Name" name="Name" class="form-control" ng-model="currentCategory.Name" required/>
+                    <input type="text" id="Name" name="Name" class="form-control" ng-model="dictionaryFactory.currentItem.Name" required/>
 
                     <div ng-messages="EditCategoryForm.Name.$error"  class="text-danger" role="alert">
                         <div ng-messages-include="/AngularTemplates/Inline?templateName=ValidationMessages"></div>
@@ -31,14 +30,14 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Description, new {@class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.TextAreaFor(model => model.Description, new {@class = "form-control", rows = 5, ng_model = "currentCategory.Description"})
+                        @Html.TextAreaFor(model => model.Description, new {@class = "form-control", rows = 5, ng_model = "dictionaryFactory.currentItem.Description" })
 
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
-                        <input type="submit" value="Save" class="btn btn-primary" ng_click="saveCategory()"/>
+                        <input type="submit" value="Save" class="btn btn-primary" ng-click="saveItem()"/>
                         <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>

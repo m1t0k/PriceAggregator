@@ -37,24 +37,13 @@ app.controller("DashboardController",
             $scope.getList($scope.type, $scope.pageIndex, $scope.pageSize, sortName);
         };
 
-        $scope.changeView = function(view) {
-            $location.path(view);
-        };
-
-        $scope.openEditDialog = function(item) {
+        $scope.changeView = function(view, item) {
             if (item != undefined) {
-                $scope.currentItem = item;
+                $scope.dictionaryFactory.currentItem = item;
             } else {
-                $scope.currentItem = { Id: 0 };
+                $scope.dictionaryFactory.currentItem = { Id: 0 };
             }
-            $("#EditCategoryDialog")
-                .dialog({
-                    autoOpen: false,
-                    height: 300,
-                    width: 550,
-                    modal: true
-                });
-            $("#EditCategoryDialog").dialog("open");
+            $location.path(view);
         };
 
         $scope.getSortExpression = function() {
@@ -115,13 +104,14 @@ app.controller("DashboardController",
                 .getItem($scope.type, id);
         };
 
-        $scope.saveCategory = function() {
-            if ($scope.currentItem == undefined)
+        $scope.saveItem = function () {
+         
+            if ($scope.dictionaryFactory.currentItem == undefined)
                 return;
 
-            if ($scope.currentItem.Id === 0)
+            if ($scope.dictionaryFactory.currentItem.Id === 0)
                 return $scope.dictionaryFactory
-                    .createItem($scope.type, $scope.currentItem)
+                    .createItem($scope.type, $scope.dictionaryFactory.currentItem)
                     .success(function(data) {
 
                     })
@@ -130,7 +120,7 @@ app.controller("DashboardController",
                     });;
 
             return $scope.dictionaryFactory
-                .updateItem($scope.type, $scope.currentItem)
+                .updateItem($scope.type, $scope.dictionaryFactory.currentItem)
                 .success(function(data) {
 
                 })

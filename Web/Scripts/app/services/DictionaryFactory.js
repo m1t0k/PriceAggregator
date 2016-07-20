@@ -10,7 +10,7 @@ app.factory("dictionaryFactory",
         factory.itemList = null;
         factory.itemCount = 0;
         factory.baseUrl = "";
-
+        factory.currentItem = null;
 
         factory.getList = function(type, pageIndex, pageSize, sortName) {
 
