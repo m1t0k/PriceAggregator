@@ -3,33 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{F237D56D-09BB-4ECE-91ED-EE2A304F60B5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Web", "Web\PriceAggregator.Web.csproj", "{F237D56D-09BB-4ECE-91ED-EE2A304F60B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DataEntity", "Core.DataEntity\Core.DataEntity.csproj", "{FBA3E581-95ED-417D-8629-E7946BC7D0FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DataEntity", "Core.DataEntity\PriceAggregator.Core.DataEntity.csproj", "{FBA3E581-95ED-417D-8629-E7946BC7D0FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DataAccess", "Core.DataAccess\Core.DataAccess.csproj", "{4507DE55-F459-4941-88EF-9D5C13DDD9C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DataAccess", "Core.DataAccess\PriceAggregator.Core.DataAccess.csproj", "{4507DE55-F459-4941-88EF-9D5C13DDD9C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Logging", "Core.Logging\Core.Logging.csproj", "{57D0F4D7-8D86-42C1-AC85-CC24A178C4FC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.Logging", "Core.Logging\PriceAggregator.Core.Logging.csproj", "{57D0F4D7-8D86-42C1-AC85-CC24A178C4FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Logging.Inteface", "Core.Logging.Inteface\Core.Logging.Inteface.csproj", "{E0AA47A9-C365-4658-B509-64BEEFDE6ACA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.Logging.Inteface", "Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj", "{E0AA47A9-C365-4658-B509-64BEEFDE6ACA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DataEntity.Base", "Core.DataEntity.Base\Core.DataEntity.Base.csproj", "{B77BE544-4017-4783-8642-38707CCE40F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DataEntity.Base", "Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj", "{B77BE544-4017-4783-8642-38707CCE40F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Exceptions", "Core.Exceptions\Core.Exceptions.csproj", "{C3498509-2E9D-434A-8456-075802C881C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.Exceptions", "Core.Exceptions\PriceAggregator.Core.Exceptions.csproj", "{C3498509-2E9D-434A-8456-075802C881C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DataAccess.Interfaces", "Core.DataAccess.Interfaces\Core.DataAccess.Interfaces.csproj", "{01DE9B73-58AF-45B1-AAEA-30F8A74654F4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DataAccess.Interfaces", "Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj", "{01DE9B73-58AF-45B1-AAEA-30F8A74654F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DictionaryProvider", "Core.DictionaryProvider\Core.DictionaryProvider.csproj", "{EE69F1A5-E14A-44BD-998F-4CBBE2EE3F11}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DictionaryProvider", "Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj", "{EE69F1A5-E14A-44BD-998F-4CBBE2EE3F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DictionaryProvider.Interfaces", "Core.DictionaryProvider.Interfaces\Core.DictionaryProvider.Interfaces.csproj", "{CA1AF2EA-6ABA-4654-889C-8B6AF5552647}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DictionaryProvider.Interfaces", "Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj", "{CA1AF2EA-6ABA-4654-889C-8B6AF5552647}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Dictionary", "Web.Dictionary\Web.Dictionary.csproj", "{8A532BD5-425B-4AF3-9D92-E0407CE916AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Web.Dictionary", "Web.Dictionary\PriceAggregator.Web.Dictionary.csproj", "{8A532BD5-425B-4AF3-9D92-E0407CE916AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Dictionary.Tests", "Web.Dictionary.Tests\Web.Dictionary.Tests.csproj", "{0ED161DB-7FEA-4120-8346-A0A6E3EAC1ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Web.Dictionary.Tests", "Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj", "{0ED161DB-7FEA-4120-8346-A0A6E3EAC1ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DataAccess.Tests", "Core.DataAccess.Tests\Core.DataAccess.Tests.csproj", "{59CD6AD0-C39E-4D0C-8E66-BEDF5F2036E8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DataAccess.Tests", "Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj", "{59CD6AD0-C39E-4D0C-8E66-BEDF5F2036E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api.Common", "Web.Api.Common\Web.Api.Common.csproj", "{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Web.Api.Common", "Web.Api.Common\PriceAggregator.Web.Api.Common.csproj", "{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

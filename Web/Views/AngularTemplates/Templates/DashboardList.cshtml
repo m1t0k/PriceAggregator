@@ -11,7 +11,7 @@
         <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
     </div>
     <div>
-        <select ng-model="type" ng-options="x for x in typeList" ng-change="changeType()" ></select>
+        <select ng-model="dictionaryFactory.currentType" ng-options="x for x in typeList" ng-change="changeType()" ></select>
     </div>
 
     <p>
@@ -30,10 +30,10 @@
         </tr>
         <tr>
             <th>
-                <a href="#" ng-click="changeSortName('Name')">@Category.Name</a>
+                <a ng-click="changeSortName('Name')" style="cursor: pointer;" >@Category.Name</a>
             </th>
             <th>
-                <a href="#" ng-click="changeSortName('Description')">
+                <a  ng-click="changeSortName('Description')"  style="cursor: pointer;" >
                     @Category.Description
                 </a>
             </th>
@@ -58,7 +58,7 @@
                 </button>
 
 
-                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteItem(item.Id,'Are you sure to delete category '+ item.Name + '?')">
+                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteItem(item.Id,'Are you sure to delete '+ item.Name + '?')">
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </button>
             </td>

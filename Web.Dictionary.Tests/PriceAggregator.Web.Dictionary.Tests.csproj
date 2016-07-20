@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -103,9 +104,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Web.Dictionary\Web.Dictionary.csproj">
+    <ProjectReference Include="..\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj">
       <Project>{8A532BD5-425B-4AF3-9D92-E0407CE916AA}</Project>
-      <Name>Web.Dictionary</Name>
+      <Name>PriceAggregator.Web.Dictionary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

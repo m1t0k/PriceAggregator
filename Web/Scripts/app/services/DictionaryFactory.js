@@ -11,9 +11,10 @@ app.factory("dictionaryFactory",
         factory.itemCount = 0;
         factory.baseUrl = "";
         factory.currentItem = null;
+        factory.currentType = null;
 
         factory.getList = function(type, pageIndex, pageSize, sortName) {
-
+            factory.itemList = [];
             return $http.get(factory.baseUrl +
                     "/" +
                     type +
@@ -28,7 +29,6 @@ app.factory("dictionaryFactory",
                     factory.itemList = data;
                 })
                 .error(function() {
-                    factory.itemList = [];
                 });
         };
 
@@ -106,17 +106,18 @@ app.factory("dictionaryFactory",
                 });
         };
 
-        factory.getCount = function(type) {
+        factory.getCount = function (type) {
+            factory.itemCount = 0;
             return $http.get(factory.baseUrl +
                     "/" +
                     type +
                     "/list/count")
                 .success(function(data) {
                     // magic line, we resolve the data IN the factory!
+                    
                     factory.itemCount = data;
                 })
-                .error(function() {
-                    factory.itemCount = 0;
+                .error(function(error) {
                 });
         };
 

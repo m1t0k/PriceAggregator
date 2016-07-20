@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C3498509-2E9D-434A-8456-075802C881C1}</ProjectGuid>
+    <ProjectGuid>{FBA3E581-95ED-417D-8629-E7946BC7D0FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PriceAggregator.Core.Exceptions</RootNamespace>
-    <AssemblyName>PriceAggregator.Core.Exceptions</AssemblyName>
+    <RootNamespace>PriceAggregator.Core.DataEntity</RootNamespace>
+    <AssemblyName>PriceAggregator.Core.DataEntity</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,7 +32,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,9 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ObjectAlreadyExistsException.cs" />
-    <Compile Include="ObjectDoesNotExistException.cs" />
+    <Compile Include="Brand.cs" />
+    <Compile Include="Category.cs" />
+    <Compile Include="PriceList.cs" />
+    <Compile Include="PriceTask.cs" />
+    <Compile Include="PriceTaskStatus.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductItem.cs" />
+    <Compile Include="ProductItemStatus.cs" />
+    <Compile Include="ProductList.cs" />
+    <Compile Include="Retailer.cs" />
+    <Compile Include="RRPSituationReport.cs" />
+    <Compile Include="RRPViolationReport.cs" />
+    <Compile Include="Core\SupportedDataEntities.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj">
+      <Project>{b77be544-4017-4783-8642-38707cce40f8}</Project>
+      <Name>PriceAggregator.Core.DataEntity.Base</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

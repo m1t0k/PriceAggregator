@@ -33,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -2985,6 +2986,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\DashboardController.js" />
+    <Content Include="Scripts\app\controllers\DictionaryEditController.js" />
     <Content Include="Scripts\app\routes.js" />
     <Content Include="Scripts\app\services\DictionaryFactory.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -4317,33 +4319,33 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core.DataAccess.Interfaces\Core.DataAccess.Interfaces.csproj">
+    <ProjectReference Include="..\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj">
       <Project>{01de9b73-58af-45b1-aaea-30f8a74654f4}</Project>
-      <Name>Core.DataAccess.Interfaces</Name>
+      <Name>PriceAggregator.Core.DataAccess.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.DataAccess\Core.DataAccess.csproj">
+    <ProjectReference Include="..\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj">
       <Project>{4507de55-f459-4941-88ef-9d5c13ddd9c7}</Project>
-      <Name>Core.DataAccess</Name>
+      <Name>PriceAggregator.Core.DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.DataEntity.Base\Core.DataEntity.Base.csproj">
+    <ProjectReference Include="..\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj">
       <Project>{b77be544-4017-4783-8642-38707cce40f8}</Project>
-      <Name>Core.DataEntity.Base</Name>
+      <Name>PriceAggregator.Core.DataEntity.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.DataEntity\Core.DataEntity.csproj">
+    <ProjectReference Include="..\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj">
       <Project>{fba3e581-95ed-417d-8629-e7946bc7d0fb}</Project>
-      <Name>Core.DataEntity</Name>
+      <Name>PriceAggregator.Core.DataEntity</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.DictionaryProvider.Interfaces\Core.DictionaryProvider.Interfaces.csproj">
+    <ProjectReference Include="..\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj">
       <Project>{ca1af2ea-6aba-4654-889c-8b6af5552647}</Project>
-      <Name>Core.DictionaryProvider.Interfaces</Name>
+      <Name>PriceAggregator.Core.DictionaryProvider.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.Logging.Inteface\Core.Logging.Inteface.csproj">
+    <ProjectReference Include="..\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj">
       <Project>{e0aa47a9-c365-4658-b509-64beefde6aca}</Project>
-      <Name>Core.Logging.Inteface</Name>
+      <Name>PriceAggregator.Core.Logging.Inteface</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Core.Logging\Core.Logging.csproj">
+    <ProjectReference Include="..\Core.Logging\PriceAggregator.Core.Logging.csproj">
       <Project>{57d0f4d7-8d86-42c1-ac85-cc24a178c4fc}</Project>
-      <Name>Core.Logging</Name>
+      <Name>PriceAggregator.Core.Logging</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
