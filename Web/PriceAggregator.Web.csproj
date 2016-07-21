@@ -2987,6 +2987,7 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\controllers\DashboardController.js" />
     <Content Include="Scripts\app\controllers\DictionaryEditController.js" />
+    <Content Include="Scripts\app\directives\Notification.js" />
     <Content Include="Scripts\app\routes.js" />
     <Content Include="Scripts\app\services\DictionaryFactory.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -4287,7 +4288,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\app\directives\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

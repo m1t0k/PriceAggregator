@@ -28,7 +28,7 @@ namespace PriceAggregator.Core.DataEntity
         public string Sku { get; set; }
 
         [Column("rrp")]
-        public double? Rrp { get; set; }
+        public decimal? Rrp { get; set; }
 
 
         [ForeignKey("Brand")]
@@ -60,6 +60,6 @@ namespace PriceAggregator.Core.DataEntity
         public DateTime CreatedAt { get; set; }
 
         [Column("lastupdated")]
-        public DateTime LastUpdated { get; set; }
+        public DateTime? LastUpdated { get; set; }
     }
 }

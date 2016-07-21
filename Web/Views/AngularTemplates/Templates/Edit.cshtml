@@ -1,29 +1,29 @@
 ﻿@using PriceAggregator.Web.App_LocalResources
+@using PriceAggregator.Web.Core
 @model PriceAggregator.Core.DataEntity.Category
 
 @{
     Layout = null;
+  
 }
 
+
 <!-- Modal Dialog -->
-<div id="EditDialog" title="@Category.EditCategoryTitle" ng-controller="DictionaryEditController">
-    <form name="EditForm">
+<div id="EditDialog" title="@Category.EditCategoryTitle" ng-controller="DictionaryEditController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl');">
+    <form name="editForm" novalidate ng-submit="save();">
 
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-
+            <div class="form-group" growl></div>
           
-            <div class="form-group col-md-12">
-                <div class="alert" role="alert" id="Result"></div>
-            </div>
-
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, new {@class = "control-label col-md-3"})
-                <div class="col-md-9">
-                    <input type="text" id="Name" name="Name" class="form-control" ng-model="dictionaryFactory.currentItem.Name" required/>
+                <!---ng-messages="editForm.name.$error" --->
+                <div class="col-md-9" >
+                    <input type="text" id="name" name="name" class="form-control" ng-model="item.Name" required/>
 
-                    <div ng-messages="EditCategoryForm.Name.$error" class="text-danger" role="alert">
+                    <div ng-messages="editForm.name.$error" ng-show="editForm.name.$touched" class="text-danger" role="alert">
                         <div ng-messages-include="/AngularTemplates/Inline?templateName=ValidationMessages"></div>
                     </div>
 
@@ -32,14 +32,14 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Description, new {@class = "control-label col-md-3"})
                     <div class="col-md-9">
-                        @Html.TextAreaFor(model => model.Description, new {@class = "form-control", rows = 5, ng_model = "dictionaryFactory.currentItem.Description"})
+                        @Html.TextAreaFor(model => model.Description, new {@class = "form-control", rows = 5, ng_model = "item.Description"})
 
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
-                        <input type="submit" value="Save" class="btn btn-primary" ng-click="saveItem($('Result'),'success','error')"/>
+                        <input type="submit" value="Save" class="btn btn-primary" ng-disabled="editForm.$invalid" />
                         <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>

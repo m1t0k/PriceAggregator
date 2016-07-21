@@ -3,17 +3,14 @@
 app.factory("dictionaryFactory",
 [
     "$http", function($http) {
-        delete $http.defaults.headers.common["X-Requested-With"];
+        //    delete $http.defaults.headers.common["X-Requested-With"];
 
         var factory = {};
-        factory.typeList = null;
-        factory.itemList = null;
-        factory.itemCount = 0;
-        factory.baseUrl = "";
-        factory.currentItem = null;
-        factory.currentType = null;
 
-        factory.getList = function(type, pageIndex, pageSize, sortName) {
+        factory.baseUrl = "";
+
+
+        factory.getList = function(type, pageIndex, pageSize, sortName, successHandler, errorHandler) {
             factory.itemList = [];
             return $http.get(factory.baseUrl +
                     "/" +
@@ -24,103 +21,59 @@ app.factory("dictionaryFactory",
                     pageSize +
                     "/" +
                     encodeURIComponent(sortName))
-                .success(function(data) {
-                    // magic line, we resolve the data IN the factory!
-                    factory.itemList = data;
-                })
-                .error(function() {
-                });
+                .then(
+                    function(response) { successHandler(response); },
+                    function(response) { errorHandler(response); }
+                );
         };
 
-        factory.getTypes = function() {
-
-            return $http.get(factory.baseUrl +
-                    "/types")
-                .success(function(data) {
-                    // magic line, we resolve the data IN the factory!
-                    factory.typeList = data;
-                })
-                .error(function() {
-                    return [];
-                });;
+        factory.getTypes = function (successHandler, errorHandler) {
+            return $http.get(factory.baseUrl + "/types")
+              .then(
+                    function (response) { successHandler(response); },
+                    function (response) { errorHandler(response); }
+                );
         };
 
-        factory.getItem = function(type, id) {
-            return $http.get(factory.baseUrl +
-                    "/" +
-                    type +
-                    "/" +
-                    id)
-                .success(function(data) {
-                    // magic line, we resolve the data IN the factory!
-                    return data;
-                })
-                .error(function() {
-                    return [];
-                });
+        factory.getItem = function(type, id, successHandler, errorHandler) {
+            return $http.get(factory.baseUrl + "/" + type + "/" + id)
+                .then(
+                    function(response) { successHandler(response); },
+                    function(response) { errorHandler(response); }
+                );
         };
 
-        factory.createItem = function(type, item) {
-            return $http.post(factory.baseUrl +
-                    "/" +
-                    type +
-                    "/",
-                    item)
-                .success(function(data) {
-                    // magic line, we resolve the data IN the factory!
-                    return data;
-                })
-                .error(function() {
-                    return [];
-                });
+        factory.createItem = function(type, item, successHandler, errorHandler) {
+            return $http.post(factory.baseUrl + "/" + type + "/", item)
+                .then(
+                    function(response) { successHandler(response); },
+                    function(response) { errorHandler(response); }
+                );
         };
 
-        factory.updateItem = function(type, item) {
-            return $http.put(factory.baseUrl +
-                    "/" +
-                    type +
-                    "/" +
-                    item.Id,
-                    item)
-                .success(function(data) {
-                    // magic line, we resolve the data IN the factory!
-                    return data;
-                })
-                .error(function() {
-                    return [];
-                });
+        factory.updateItem = function(type, item, successHandler, errorHandler) {
+            return $http.put(factory.baseUrl + "/" + type + "/" + item.Id, item)
+                .then(
+                    function(response) { successHandler(response); },
+                    function(response) { errorHandler(response); }
+                );
         };
 
-        factory.deleteItem = function(type, id) {
-            return $http.delete(factory.baseUrl +
-                    "/" +
-                    type +
-                    "/" +
-                    id)
-                .success(function(data) {
-                    // magic line, we resolve the data IN the factory!
-                    return data;
-                })
-                .error(function() {
-                    return [];
-                });
+        factory.deleteItem = function(type, id, successHandler, errorHandler) {
+            return $http.delete(factory.baseUrl + "/" + type + "/" + id)
+                .then(
+                    function(response) { successHandler(response); },
+                    function(response) { errorHandler(response); }
+                );
         };
 
-        factory.getCount = function (type) {
-            factory.itemCount = 0;
-            return $http.get(factory.baseUrl +
-                    "/" +
-                    type +
-                    "/list/count")
-                .success(function(data) {
-                    // magic line, we resolve the data IN the factory!
-                    
-                    factory.itemCount = data;
-                })
-                .error(function(error) {
-                });
+        factory.getCount = function(type, successHandler, errorHandler) {
+            return $http.get(factory.baseUrl + "/" + type + "/list/count")
+                .then(
+                    function(response) { successHandler(response); },
+                    function(response) { errorHandler(response); }
+                );
         };
-
 
         return factory;
     }

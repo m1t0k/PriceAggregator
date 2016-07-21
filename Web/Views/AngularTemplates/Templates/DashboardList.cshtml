@@ -15,7 +15,7 @@
     </div>
 
     <p>
-        <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('create')" data-title="Edit category {{ category.Name}}">
+        <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('create/'+dictionaryFactory.currentType)" data-title="Edit category {{ category.Name}}">
             <i class="glyphicon glyphicon-create"></i> Create
         </button>
     </p>
@@ -53,7 +53,7 @@
             </td>
             <td class="col-md-1">
 
-                <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('edit',item)" data-title="Edit category {{ item.Name}}">
+                <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('edit/'+dictionaryFactory.currentType+'/'+item.Id,item)" data-title="Edit category {{ item.Name}}">
                     <i class="glyphicon glyphicon-edit"></i> Edit
                 </button>
 

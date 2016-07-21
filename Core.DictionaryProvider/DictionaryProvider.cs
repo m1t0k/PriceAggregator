@@ -157,7 +157,7 @@ namespace PriceAggregator.Core.DictionaryProvider
                 if (Logger.IsValueCreated)
                     Logger.Value.Dispose();
             }
-            catch (Exception e)
+            catch
             {
             }
         }

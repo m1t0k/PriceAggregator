@@ -9,12 +9,16 @@ app.controller("DashboardController",
         $scope.pageSize = 20;
         $scope.sortName = "";
         $scope.acsending = true; // asc
-        
+
         $scope.itemList = {};
         $scope.itemCount = 0;
 
         $scope.typeList = {};
         $scope.pageSizes = [10, 15, 20, 50, 100];
+
+        $scope.errorHandler = function() {
+        };
+
 
         $scope.changePageIndex = function(pageIndex) {
             if (pageIndex != undefined)
@@ -38,7 +42,6 @@ app.controller("DashboardController",
         };
 
         $scope.setSortName = function(sortName) {
-
             if (sortName != undefined) {
                 if ($scope.sortName === sortName) {
                     $scope.acsending = !$scope.acsending;
@@ -48,8 +51,7 @@ app.controller("DashboardController",
             }
         };
 
-        $scope.changeSortName = function (sortName) {
-
+        $scope.changeSortName = function(sortName) {
             $scope.setSortName(sortName);
             $scope.refreshData();
         };
@@ -70,13 +72,13 @@ app.controller("DashboardController",
         };
 
 
-        $scope.refreshData = function () {
+        $scope.refreshData = function() {
             $scope.getCount();
             $scope.getList();
         };
 
         $scope.getList = function(type, pageIndex, pageSize, sortName) {
-            
+
             if (type != undefined)
                 $scope.dictionaryFactory.currentType = type;
 
@@ -87,36 +89,34 @@ app.controller("DashboardController",
                 $scope.pageSize = pageSize;
 
             $scope.setSortName(sortName);
-            
+
             $scope.dictionaryFactory
                 .getList($scope.dictionaryFactory.currentType,
                     $scope.pageIndex,
                     $scope.pageSize,
-                    $scope.getSortExpression())
-                .then(function () {
-                    $scope.itemList = $scope.dictionaryFactory.itemList;
-                });
-
-            return;
+                    $scope.getSortExpression(),
+                    function(response) {
+                        $scope.itemList = response.data;
+                    },
+                    $scope.errorHandler);
         };
 
-        $scope.getCount = function () {
+        $scope.getCount = function() {
             $scope.dictionaryFactory
-                .getCount($scope.dictionaryFactory.currentType)
-                .then(function () {
-                    $scope.itemCount = $scope.dictionaryFactory.itemCount;
-                });
+                .getCount($scope.dictionaryFactory.currentType,
+                    function(response) {
+                        $scope.itemCount = response.data;
+                    },
+                    $scope.errorHanlder);
         };
 
-        $scope.getTypes = function() {
+        $scope.readDictionaryTypes = function() {
             $scope.typeList = $scope.dictionaryFactory
-                .getTypes()
-                .then(function() {
-                    $scope.typeList = $scope.dictionaryFactory.typeList;
-                });
-
-            return $scope.typeList;
-        };;
+                .getTypes(function(response) {
+                        $scope.typeList = response.data;
+                    },
+                    $scope.errorHandler);
+        };
 
         $scope.deleteItem = function(id, message) {
 
@@ -124,18 +124,20 @@ app.controller("DashboardController",
                 var result = confirm(message);
 
             if (result === false)
-                return;
+                return [];
 
             return $scope.dictionaryFactory
-                .deleteItem($scope.dictionaryFactory.currentType, id)
-                .then(function() {
-                    $scope.refreshData();
-                });
+                .deleteItem($scope.dictionaryFactory.currentType,
+                    id,
+                    function(response) {
+                        $scope.refreshData();
+                    },
+                    $scope.errorHandler);
         };
 
         $scope.init = function(url) {
             $scope.dictionaryFactory.baseUrl = url;
-            $scope.getTypes();
+            $scope.readDictionaryTypes();
         };
     }
 ]);

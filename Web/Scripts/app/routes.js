@@ -10,13 +10,13 @@ app.config([
                 controller: "DashboardController",
                 controllerAs: "PaWeb"
             })
-            .when("/create",
+            .when("/create/:type/",
             {
                 templateUrl: "/AngularTemplates/Inline?templateName=Edit",
                 controller: "DashboardController",
                 controllerAs: "PaWeb"
             })
-            .when("/edit",
+            .when("/edit/:type/:id",
             {
                 templateUrl: "/AngularTemplates/Inline?templateName=Edit",
                 controller: "DashboardController",
