@@ -12,13 +12,13 @@
         <select ng-model="currentType" ng-options="x for x in typeList" ng-change="changeType()"></select>
     </div>
 
-<div ng-show="isTypeSelected()">
+<div ng-show="isDictionaryTypeDefined()">
     <div>
         <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
     </div>
 
     <p>
-        <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('create/'+currentType)" data-title="Edit category {{ category.Name}}">
+        <button class="btn btn-xs btn-primary" type="button" ng-click="switchToCreateView()" data-title="Edit category {{ category.Name}}">
             <i class="glyphicon glyphicon-create"></i> Create
         </button>
     </p>
@@ -56,12 +56,12 @@
             </td>
             <td class="col-md-1">
 
-                <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('edit/'+currentType+'/'+item.Id,item)" data-title="Edit category {{ item.Name}}">
+                <button class="btn btn-xs btn-primary" type="button" ng-click="switchToEditView(item)" data-title="Edit category {{ item.Name}}">
                     <i class="glyphicon glyphicon-edit"></i> Edit
                 </button>
 
 
-                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteItem(item.Id,'Are you sure to delete '+ item.Name + '?')">
+                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteItem(item,'Are you sure to delete '+ item.Name + '?')">
                     <i class="glyphicon glyphicon-trash"></i> Delete
                 </button>
             </td>

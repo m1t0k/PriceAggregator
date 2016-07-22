@@ -4,7 +4,6 @@ app.controller("dictionaryDashboardController",
     "$scope", "$location", "$http", "dictionaryFactory", "growl",
     function($scope, $location, $http, dictionaryFactory, growl) {
 
-        $scope.dictionaryFactory = dictionaryFactory;
         $scope.currentType = "";
         $scope.pageIndex = 1;
         $scope.pageSize = 20;
@@ -55,13 +54,17 @@ app.controller("dictionaryDashboardController",
             $scope.refreshData();
         };
 
-        $scope.changeView = function(view, item) {
-            if (angular.isDefined(item)) {
-                $scope.dictionaryFactory.currentItem = item;
-            } else {
-                $scope.dictionaryFactory.currentItem = { Id: 0 };
+        $scope.switchToCreateView = function() {
+            if ($scope.isDictionaryTypeDefined()) {
+                $location.path('create/'+$scope.currentType);
             }
-            $location.path(view);
+        };
+
+        $scope.switchToEditView = function (item) {
+
+            if (angular.isDefined(item)) {
+                $location.path('edit/' + $scope.currentType+'/'+item.Id);
+            }
         };
 
         $scope.getSortExpression = function() {
@@ -99,7 +102,7 @@ app.controller("dictionaryDashboardController",
 
             $scope.setSortName(sortName);
 
-            $scope.dictionaryFactory
+            dictionaryFactory
                 .getList($scope.currentType,
                     $scope.pageIndex,
                     $scope.pageSize,
@@ -110,12 +113,12 @@ app.controller("dictionaryDashboardController",
                     $scope.errorHandler);
         };
 
-        $scope.isTypeSelected = function() {
+        $scope.isDictionaryTypeDefined = function() {
             return angular.isDefined($scope.currentType) && $scope.currentType.length>0;
         };
 
         $scope.getCount = function() {
-            $scope.dictionaryFactory
+            dictionaryFactory
                 .getCount($scope.currentType,
                     function(response) {
                         $scope.itemCount = response.data;
@@ -124,23 +127,23 @@ app.controller("dictionaryDashboardController",
         };
 
         $scope.readDictionaryTypes = function() {
-            $scope.typeList = $scope.dictionaryFactory
+            $scope.typeList = dictionaryFactory
                 .getTypes(function(response) {
                         $scope.typeList = response.data;
                     },
                     $scope.errorHandler);
         };
 
-        $scope.deleteItem = function(id, message) {
-            if (angular.isDefined(message))
+        $scope.deleteItem = function(item, message) {
+            if (angular.isDefined(item) && angular.isDefined(message))
                 var result = confirm(message);
 
             if (result === false)
                 return [];
 
-            return $scope.dictionaryFactory
+            return dictionaryFactory
                 .deleteItem($scope.currentType,
-                    id,
+                    item.Id,
                     function(response) {
                         $scope.refreshData();
                     },
@@ -148,7 +151,7 @@ app.controller("dictionaryDashboardController",
         };
 
         $scope.init = function(url) {
-            $scope.dictionaryFactory.baseUrl = url;
+            dictionaryFactory.baseUrl = url;
             $scope.readDictionaryTypes();
         };
     }
