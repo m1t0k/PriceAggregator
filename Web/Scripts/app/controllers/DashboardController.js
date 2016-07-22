@@ -18,35 +18,32 @@ app.controller("DashboardController",
 
         $scope.errorHandler = function() {
         };
-
-
+        
         $scope.changePageIndex = function(pageIndex) {
-            if (pageIndex != undefined)
+            if (angular.isDefined(pageIndex))
                 $scope.pageIndex = pageIndex;
 
             $scope.refreshData();
         };
 
         $scope.changePageSize = function(pageSize) {
-            if (pageSize != undefined)
+            if (angular.isDefined(pageSize))
                 $scope.pageSize = pageSize;
-
             $scope.refreshData();
         };
 
         $scope.changeType = function(type) {
-            if (type != undefined)
+            if (angular.isDefined(type))
                 $scope.dictionaryFactory.currentType = type;
 
             $scope.refreshData();
         };
 
         $scope.setSortName = function(sortName) {
-            if (sortName != undefined) {
+            if (angular.isDefined(sortName)) {
                 if ($scope.sortName === sortName) {
                     $scope.acsending = !$scope.acsending;
                 }
-
                 $scope.sortName = sortName;
             }
         };
@@ -57,7 +54,7 @@ app.controller("DashboardController",
         };
 
         $scope.changeView = function(view, item) {
-            if (item != undefined) {
+            if (angular.isDefined(item)) {
                 $scope.dictionaryFactory.currentItem = item;
             } else {
                 $scope.dictionaryFactory.currentItem = { Id: 0 };
@@ -66,26 +63,24 @@ app.controller("DashboardController",
         };
 
         $scope.getSortExpression = function() {
-            if ($scope.sortName == undefined || $scope.sortName === "")
+            if (angular.isUndefined($scope.sortName) || $scope.sortName === "")
                 return "";
             return $scope.sortName + ($scope.acsending ? "" : " desc");
         };
-
-
+        
         $scope.refreshData = function() {
             $scope.getCount();
             $scope.getList();
         };
 
         $scope.getList = function(type, pageIndex, pageSize, sortName) {
-
-            if (type != undefined)
+            if (angular.isDefined(type))
                 $scope.dictionaryFactory.currentType = type;
 
-            if (pageIndex != undefined)
+            if (angular.isDefined(pageIndex))
                 $scope.pageIndex = pageIndex;
 
-            if (pageSize != undefined)
+            if (angular.isDefined(pageSize))
                 $scope.pageSize = pageSize;
 
             $scope.setSortName(sortName);
@@ -107,7 +102,7 @@ app.controller("DashboardController",
                     function(response) {
                         $scope.itemCount = response.data;
                     },
-                    $scope.errorHanlder);
+                    $scope.errorHandler);
         };
 
         $scope.readDictionaryTypes = function() {
@@ -119,8 +114,7 @@ app.controller("DashboardController",
         };
 
         $scope.deleteItem = function(id, message) {
-
-            if (message != undefined)
+            if (angular.isDefined(message))
                 var result = confirm(message);
 
             if (result === false)

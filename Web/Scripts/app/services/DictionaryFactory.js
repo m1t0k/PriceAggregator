@@ -4,12 +4,10 @@ app.factory("dictionaryFactory",
 [
     "$http", function($http) {
         //    delete $http.defaults.headers.common["X-Requested-With"];
-
         var factory = {};
 
         factory.baseUrl = "";
-
-
+    
         factory.getList = function(type, pageIndex, pageSize, sortName, successHandler, errorHandler) {
             factory.itemList = [];
             return $http.get(factory.baseUrl +

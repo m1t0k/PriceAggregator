@@ -40,19 +40,19 @@ app.controller("DictionaryEditController",
                 .updateItem($scope.type, $scope.item, $scope.successHandler, $scope.errorHandler);
         };
 
-
         $scope.init = function(url, initErrorMessage, successMessage, errorMessage) {
             $scope.dictionaryFactory.baseUrl = url;
 
-            if (initErrorMessage != undefined)
+            if (angular.isDefined(initErrorMessage))
                 $scope.initErrorMessage = initErrorMessage;
 
-            if (successMessage != undefined)
+            if (angular.isDefined(successMessage))
                 $scope.successMessage = successMessage;
 
-            if (errorMessage != undefined)
+            if (angular.isDefined(errorMessage))
                 $scope.errorMessage = errorMessage;
-            if ($scope.id != undefined) {
+
+            if (angular.isDefined($scope.id)) {
                 $scope.dictionaryFactory.getItem($scope.type,
                     $scope.id,
                     function(response) {
