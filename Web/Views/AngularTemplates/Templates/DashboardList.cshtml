@@ -5,22 +5,25 @@
     Layout = null;
 }
 
-<div ng-controller="DashboardController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl')">
+<div ng-controller="dictionaryDashboardController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl')">
+    <div class="form-group" growl></div>
 
+    <div>
+        <select ng-model="currentType" ng-options="x for x in typeList" ng-change="changeType()"></select>
+    </div>
+
+<div ng-show="isTypeSelected()">
     <div>
         <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
     </div>
-    <div>
-        <select ng-model="dictionaryFactory.currentType" ng-options="x for x in typeList" ng-change="changeType()" ></select>
-    </div>
 
     <p>
-        <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('create/'+dictionaryFactory.currentType)" data-title="Edit category {{ category.Name}}">
+        <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('create/'+currentType)" data-title="Edit category {{ category.Name}}">
             <i class="glyphicon glyphicon-create"></i> Create
         </button>
     </p>
 
-    <table class="table">
+    <table class="table" ng-show="resultIsNotEmpty()">
         <tr>
             <td colspan="3">
                 <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
@@ -53,7 +56,7 @@
             </td>
             <td class="col-md-1">
 
-                <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('edit/'+dictionaryFactory.currentType+'/'+item.Id,item)" data-title="Edit category {{ item.Name}}">
+                <button class="btn btn-xs btn-primary" type="button" ng-click="changeView('edit/'+currentType+'/'+item.Id,item)" data-title="Edit category {{ item.Name}}">
                     <i class="glyphicon glyphicon-edit"></i> Edit
                 </button>
 
@@ -72,5 +75,5 @@
         </tr>
     </table>
 
-
+</div>
 </div>

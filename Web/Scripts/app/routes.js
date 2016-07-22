@@ -7,19 +7,19 @@ app.config([
         $routeProvider.when("/",
             {
                 templateUrl: "/AngularTemplates/Inline?templateName=DashboardList",
-                controller: "DashboardController",
+                controller: "dictionaryDashboardController",
                 controllerAs: "PaWeb"
             })
             .when("/create/:type/",
             {
                 templateUrl: "/AngularTemplates/Inline?templateName=Edit",
-                controller: "DashboardController",
+                controller: "dictionaryEditController",
                 controllerAs: "PaWeb"
             })
             .when("/edit/:type/:id",
             {
                 templateUrl: "/AngularTemplates/Inline?templateName=Edit",
-                controller: "DashboardController",
+                controller: "dictionaryEditController",
                 controllerAs: "PaWeb"
             });
     }

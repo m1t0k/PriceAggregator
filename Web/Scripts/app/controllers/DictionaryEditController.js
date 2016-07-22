@@ -1,5 +1,5 @@
 ﻿"use strict";
-app.controller("DictionaryEditController",
+app.controller("dictionaryEditController",
 [
     "$scope", "$location", "$http", "$timeout", "$routeParams", "dictionaryFactory", "growl",
     function($scope, $location, $http, $timeout, $routeParams, dictionaryFactory, growl) {

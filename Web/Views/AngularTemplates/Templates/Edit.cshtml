@@ -9,7 +9,7 @@
 
 
 <!-- Modal Dialog -->
-<div id="EditDialog" title="@Category.EditCategoryTitle" ng-controller="DictionaryEditController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl');">
+<div id="EditDialog" title="@Category.EditCategoryTitle" ng-controller="dictionaryEditController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl');">
     <form name="editForm" novalidate ng-submit="save();">
 
         @Html.AntiForgeryToken()

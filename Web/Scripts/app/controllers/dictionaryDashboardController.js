@@ -1,22 +1,24 @@
 ﻿"use strict";
-app.controller("DashboardController",
+app.controller("dictionaryDashboardController",
 [
-    "$scope", "$location", "$http", "dictionaryFactory",
-    function($scope, $location, $http, dictionaryFactory) {
+    "$scope", "$location", "$http", "dictionaryFactory", "growl",
+    function($scope, $location, $http, dictionaryFactory, growl) {
 
         $scope.dictionaryFactory = dictionaryFactory;
+        $scope.currentType = "";
         $scope.pageIndex = 1;
         $scope.pageSize = 20;
         $scope.sortName = "";
         $scope.acsending = true; // asc
 
-        $scope.itemList = {};
+        $scope.itemList = [];
         $scope.itemCount = 0;
 
-        $scope.typeList = {};
+        $scope.typeList = [];
         $scope.pageSizes = [10, 15, 20, 50, 100];
 
-        $scope.errorHandler = function() {
+        $scope.errorHandler = function () {
+            growl.error("error occured.");
         };
         
         $scope.changePageIndex = function(pageIndex) {
@@ -34,7 +36,7 @@ app.controller("DashboardController",
 
         $scope.changeType = function(type) {
             if (angular.isDefined(type))
-                $scope.dictionaryFactory.currentType = type;
+                $scope.currentType = type;
 
             $scope.refreshData();
         };
@@ -67,8 +69,20 @@ app.controller("DashboardController",
                 return "";
             return $scope.sortName + ($scope.acsending ? "" : " desc");
         };
+
+
+        $scope.resultIsNotEmpty = function () {
+            return $scope.itemCount > 0 && $scope.itemList.length > 0;
+        };
         
-        $scope.refreshData = function() {
+        $scope.resetItemData = function () {            
+            $scope.itemList = [];
+            $scope.itemCount = 0;
+
+        };
+
+        $scope.refreshData = function () {
+            $scope.resetItemData();
             $scope.getCount();
             $scope.getList();
         };
@@ -86,7 +100,7 @@ app.controller("DashboardController",
             $scope.setSortName(sortName);
 
             $scope.dictionaryFactory
-                .getList($scope.dictionaryFactory.currentType,
+                .getList($scope.currentType,
                     $scope.pageIndex,
                     $scope.pageSize,
                     $scope.getSortExpression(),
@@ -96,9 +110,13 @@ app.controller("DashboardController",
                     $scope.errorHandler);
         };
 
+        $scope.isTypeSelected = function() {
+            return angular.isDefined($scope.currentType) && $scope.currentType.length>0;
+        };
+
         $scope.getCount = function() {
             $scope.dictionaryFactory
-                .getCount($scope.dictionaryFactory.currentType,
+                .getCount($scope.currentType,
                     function(response) {
                         $scope.itemCount = response.data;
                     },
@@ -121,7 +139,7 @@ app.controller("DashboardController",
                 return [];
 
             return $scope.dictionaryFactory
-                .deleteItem($scope.dictionaryFactory.currentType,
+                .deleteItem($scope.currentType,
                     id,
                     function(response) {
                         $scope.refreshData();

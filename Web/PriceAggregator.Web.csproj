@@ -2985,10 +2985,10 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\controllers\DashboardController.js" />
-    <Content Include="Scripts\app\controllers\DictionaryEditController.js" />
+    <Content Include="Scripts\app\controllers\dictionaryDashboardController.js" />
+    <Content Include="Scripts\app\controllers\dictionaryEditController.js" />
     <Content Include="Scripts\app\routes.js" />
-    <Content Include="Scripts\app\services\DictionaryFactory.js" />
+    <Content Include="Scripts\app\services\dictionaryFactory.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
