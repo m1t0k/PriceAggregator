@@ -4,7 +4,7 @@ app.config([
     function config($locationProvider, $routeProvider) {
         $locationProvider.hashPrefix("!");
 
-        $routeProvider.when("/",
+        $routeProvider.when("/:type?",
             {
                 templateUrl: "/AngularTemplates/Inline?templateName=DashboardList",
                 controller: "dictionaryDashboardController",

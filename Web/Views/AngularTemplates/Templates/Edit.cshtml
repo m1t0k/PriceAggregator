@@ -10,7 +10,7 @@
 
 <!-- Modal Dialog -->
 <div id="EditDialog" title="@Category.EditCategoryTitle" ng-controller="dictionaryEditController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl');">
-    <form name="editForm" novalidate ng-submit="save();">
+    <form name="editForm" novalidate ng-submit="submitForm();">
 
         @Html.AntiForgeryToken()
 
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <div class="col-md-offset-3 col-md-9">
                         <input type="submit" value="Save" class="btn btn-primary" ng-disabled="editForm.$invalid" />
-                        <button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" ng-click="closeForm()" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>

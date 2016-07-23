@@ -29,7 +29,7 @@ app.controller("dictionaryEditController",
             growl.error($scope.errorMessage);
         };
 
-        $scope.save = function() {
+        $scope.submitForm = function() {
 
             if ($scope.item.Id === 0)
                 return dictionaryFactory
@@ -37,6 +37,13 @@ app.controller("dictionaryEditController",
 
             return dictionaryFactory
                 .updateItem($scope.type, $scope.item, $scope.successHandler, $scope.errorHandler);
+        };
+
+        $scope.closeForm = function () {
+            if (angular.isDefined($scope.type))
+                $location.path('/' + $scope.type);
+            else
+                $location.path('/');
         };
 
         $scope.init = function(url, initErrorMessage, successMessage, errorMessage) {

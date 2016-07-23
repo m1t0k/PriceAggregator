@@ -1,8 +1,8 @@
 ﻿"use strict";
 app.controller("dictionaryDashboardController",
 [
-    "$scope", "$location", "$http", "dictionaryFactory", "growl",
-    function($scope, $location, $http, dictionaryFactory, growl) {
+    "$scope", "$location", "$http", "$routeParams", "dictionaryFactory", "growl",
+    function($scope, $location, $http, $routeParams , dictionaryFactory, growl) {
 
         $scope.currentType = "";
         $scope.pageIndex = 1;
@@ -153,6 +153,13 @@ app.controller("dictionaryDashboardController",
         $scope.init = function(url) {
             dictionaryFactory.baseUrl = url;
             $scope.readDictionaryTypes();
+            if (angular.isDefined($routeParams.type)) {
+                $scope.currentType = $routeParams.type;
+            }
+       
+            if ($scope.isDictionaryTypeDefined()) {
+                $scope.refreshData();
+            }
         };
     }
 ]);
