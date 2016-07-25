@@ -1,79 +1,82 @@
 ﻿@using PriceAggregator.Web.App_LocalResources
 @using PriceAggregator.Web.Core
-
 @{
     Layout = null;
 }
 
+
 <div ng-controller="dictionaryDashboardController" ng-init="init('@ConfigurationProvider.DictionaryApiUrl')">
-    <div class="form-group" growl></div>
+
 
     <div>
         <select ng-model="currentType" ng-options="x for x in typeList" ng-change="changeType()"></select>
     </div>
 
-<div ng-show="isDictionaryTypeDefined()">
-    <div>
-        <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
+    <hello3 classname="className" errormessage="errorMessage"></hello3>
+
+
+    <div ng-show="isDictionaryTypeDefined()">
+        <div>
+            <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
+        </div>
+
+        <p>
+            <button class="btn btn-xs btn-primary" type="button" ng-click="switchToCreateView()" data-title="Edit category {{ category.Name}}">
+                <i class="glyphicon glyphicon-create"></i> Create
+            </button>
+        </p>
+
+        <table class="table" ng-show="resultIsNotEmpty()">
+            <tr>
+                <td colspan="3">
+                    <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
+                                             on-page-change="changePageIndex(newPageNumber)">
+                    </dir-pagination-controls>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <a ng-click="changeSortName('Name')" style="cursor: pointer;">@Category.Name</a>
+                </th>
+                <th>
+                    <a ng-click="changeSortName('Description')" style="cursor: pointer;">
+                        @Category.Description
+                    </a>
+                </th>
+                <th></th>
+            </tr>
+
+
+            <tr dir-paginate="item in itemList | itemsPerPage: pageSize"
+                current-page="pageIndex" total-items="itemCount">
+                <td class="col-md-1">
+                    {{ item.Name}}
+                </td>
+                <td class="col-md-1">
+
+                    {{ item.Description}}
+
+                </td>
+                <td class="col-md-1">
+
+                    <button class="btn btn-xs btn-primary" type="button" ng-click="switchToEditView(item)" data-title="Edit category {{ item.Name}}">
+                        <i class="glyphicon glyphicon-edit"></i> Edit
+                    </button>
+
+
+                    <button class="btn btn-xs btn-danger" type="button" ng-click="deleteItem(item,'Are you sure to delete '+ item.Name + '?')">
+                        <i class="glyphicon glyphicon-trash"></i> Delete
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
+                                             on-page-change="changePageIndex(newPageNumber)">
+                    </dir-pagination-controls>
+                </td>
+            </tr>
+        </table>
+
     </div>
-
-    <p>
-        <button class="btn btn-xs btn-primary" type="button" ng-click="switchToCreateView()" data-title="Edit category {{ category.Name}}">
-            <i class="glyphicon glyphicon-create"></i> Create
-        </button>
-    </p>
-
-    <table class="table" ng-show="resultIsNotEmpty()">
-        <tr>
-            <td colspan="3">
-                <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
-                                         on-page-change="changePageIndex(newPageNumber)">
-                </dir-pagination-controls>
-            </td>
-        </tr>
-        <tr>
-            <th>
-                <a ng-click="changeSortName('Name')" style="cursor: pointer;" >@Category.Name</a>
-            </th>
-            <th>
-                <a  ng-click="changeSortName('Description')"  style="cursor: pointer;" >
-                    @Category.Description
-                </a>
-            </th>
-            <th></th>
-        </tr>
-
-
-        <tr dir-paginate="item in itemList | itemsPerPage: pageSize"
-            current-page="pageIndex" total-items="itemCount">
-            <td class="col-md-1">
-                {{ item.Name}}
-            </td>
-            <td class="col-md-1">
-
-                {{ item.Description}}
-
-            </td>
-            <td class="col-md-1">
-
-                <button class="btn btn-xs btn-primary" type="button" ng-click="switchToEditView(item)" data-title="Edit category {{ item.Name}}">
-                    <i class="glyphicon glyphicon-edit"></i> Edit
-                </button>
-
-
-                <button class="btn btn-xs btn-danger" type="button" ng-click="deleteItem(item,'Are you sure to delete '+ item.Name + '?')">
-                    <i class="glyphicon glyphicon-trash"></i> Delete
-                </button>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3">
-                <dir-pagination-controls template-url="/bower_components/angularUtils-pagination/dirPagination.tpl.html"
-                                         on-page-change="changePageIndex(newPageNumber)">
-                </dir-pagination-controls>
-            </td>
-        </tr>
-    </table>
-
-</div>
 </div>

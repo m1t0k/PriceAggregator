@@ -1,8 +1,8 @@
 ﻿"use strict";
 app.controller("dictionaryEditController",
 [
-    "$scope", "$location", "$http", "$timeout", "$routeParams", "dictionaryFactory", "growl",
-    function($scope, $location, $http, $timeout, $routeParams, dictionaryFactory, growl) {
+    "$scope", "$location", "$http", "$timeout", "$routeParams", "dictionaryFactory",
+    function($scope, $location, $http, $timeout, $routeParams, dictionaryFactory) {
 
         $scope.type = $routeParams.type;
         $scope.item = { Id: 0 };
@@ -18,15 +18,15 @@ app.controller("dictionaryEditController",
         };
 
         $scope.initErrorHandler = function() {
-            growl.error($scope.initErrorMessage);
+        //    growl.error($scope.initErrorMessage);
         };
 
         $scope.successHandler = function() {
-            growl.success($scope.successMessage);
+          //  growl.success($scope.successMessage);
         };
 
         $scope.errorHandler = function() {
-            growl.error($scope.errorMessage);
+            ///growl.error($scope.errorMessage);
         };
 
         $scope.submitForm = function() {

@@ -3,8 +3,6 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Mvc;
 using PriceAggergator.Core.Logging.Inteface;
-using PriceAggregator.Core.DataAccess;
-using PriceAggregator.Core.DataAccess.Interfaces;
 using PriceAggregator.Core.DataEntity;
 using PriceAggregator.Core.DataEntity.Base;
 using PriceAggregator.Core.Logging;
@@ -37,7 +35,7 @@ namespace PriceAggregator.Web.Core.IoC
 
             container.Register<ILoggingService, NLogLoggingService>(scope);
             container.Register(() => new Lazy<ILoggingService>(container.GetInstance<ILoggingService>), scope);
-         
+
             // This is an extension method from the integration package.
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
             container.RegisterMvcIntegratedFilterProvider();

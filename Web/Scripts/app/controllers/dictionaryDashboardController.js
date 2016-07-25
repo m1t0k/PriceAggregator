@@ -1,9 +1,12 @@
 ﻿"use strict";
 app.controller("dictionaryDashboardController",
 [
-    "$scope", "$location", "$http", "$routeParams", "dictionaryFactory", "growl",
-    function($scope, $location, $http, $routeParams , dictionaryFactory, growl) {
+    "$scope", "$location", "$http", "$routeParams", "dictionaryFactory",
+    function ($scope, $location, $http, $routeParams, dictionaryFactory) {
 
+        $scope.className = "";
+        $scope.errorMessage = "";
+     
         $scope.currentType = "";
         $scope.pageIndex = 1;
         $scope.pageSize = 20;
@@ -17,7 +20,10 @@ app.controller("dictionaryDashboardController",
         $scope.pageSizes = [10, 15, 20, 50, 100];
 
         $scope.errorHandler = function () {
-            growl.error("error occured.");
+            $scope.className = "alert alert-danger";
+            $scope.errorMessage = "error occured";
+            console.log(11);
+            //messageHandler.showError("error occured.");
         };
         
         $scope.changePageIndex = function(pageIndex) {
