@@ -1,17 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 using CacheManager.Core;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.DataHandler;
-using Microsoft.Owin.Security.DataHandler.Encoder;
-using Microsoft.Owin.Security.DataHandler.Serializer;
-using Microsoft.Owin.Security.DataProtection;
 using PriceAggergator.Core.Logging.Inteface;
 using PriceAggregator.Core.DataAccess;
 using PriceAggregator.Core.DataAccess.Interfaces;
@@ -41,8 +32,6 @@ namespace Web.Dictionary.Ioc
             return new Lazy<T>(container.GetInstance<T>());
         }
         */
-
-
         public static List<Type> TypeList { get; private set; }
 
         public static void Configure()
@@ -63,11 +52,11 @@ namespace Web.Dictionary.Ioc
                 var dbProviderTemplate = typeof(MsSqlDataAccessProvider<>);
                 var dbProviderType = dbProviderTemplate.MakeGenericType(type);
                 container.Register(iDbType, dbProviderType, scope);
-                
+
                 var cacheManagerTemplate = typeof(ICacheManager<>);
                 var cacheManagerType = cacheManagerTemplate.MakeGenericType(type);
                 var lazyCacheType = lazyType.MakeGenericType(cacheManagerType);
-                
+
                 var redisFactoryTemplate = typeof(RedisClientFactory<>);
                 var redisFactoryType = redisFactoryTemplate.MakeGenericType(type);
                 var factoryMethod = redisFactoryType.GetMethod("CreateRedisInstance");
@@ -86,7 +75,7 @@ namespace Web.Dictionary.Ioc
             //container.Register(typeof(IUserStore<>),typeof(UserStore<>),scope);
             container.Register<ApplicationUser>(scope);
             container.Register<ApplicationDbContext>(scope);
-            
+
             // This is an extension method from the integration package.
             container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
             container.Verify();
@@ -100,9 +89,10 @@ namespace Web.Dictionary.Ioc
             var entityAssembly = typeof(Category).Assembly;
             var entityTypes =
                 (from type in entityAssembly.GetExportedTypes()
-                where
-                    type.Namespace == typeof(Category).Namespace && type.IsClass && type.BaseType == typeof(BaseEntity)
-                select  type).ToList();
+                    where
+                        type.Namespace == typeof(Category).Namespace && type.IsClass &&
+                        type.BaseType == typeof(BaseEntity)
+                    select type).ToList();
 
             return entityTypes;
         }

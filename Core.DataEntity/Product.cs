@@ -5,21 +5,6 @@ using PriceAggregator.Core.DataEntity.Base;
 
 namespace PriceAggregator.Core.DataEntity
 {
-    /*
-     create table public.product
-(
-  id serial primary key,
-  sku varchar(512) not null,
-  name varchar(512) not null, 
-  rrp money,
-  brandId integer not null,
-  categoryId integer not null,
-  productListId integer not null,
-  createdAt timestamp not  null,
-  lastUpdated timestamp 
-)
-     */
-
     [Table("product", Schema = "dbo")]
     public class Product : BaseEntity
     {

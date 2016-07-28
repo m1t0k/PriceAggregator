@@ -26,7 +26,7 @@ app.factory("dictionaryFactory",
         };
 
         factory.getTypes = function (successHandler, errorHandler) {
-            return $http.get(factory.baseUrl + "/types")
+            return $http.get(factory.baseUrl + "/types", { withCredentials: true, headers: { 'auth-token': 'C3PO R2D2' } })
               .then(
                     function (response) { successHandler(response); },
                     function (response) { errorHandler(response); }

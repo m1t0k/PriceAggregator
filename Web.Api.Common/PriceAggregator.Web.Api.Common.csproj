@@ -36,6 +36,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -64,6 +65,9 @@
     <Compile Include="Core\Filters\ObjectAlreadyExistsFilter.cs" />
     <Compile Include="Core\Filters\ObjectDoesNotExistFilter.cs" />
     <Compile Include="Core\Filters\ValidateModelFilter.cs" />
+    <Compile Include="Core\Formatters\CsvFormater.cs" />
+    <Compile Include="Core\Handler\LoggingHandler.cs" />
+    <Compile Include="Core\Handler\ApiKeyHandler.cs" />
     <Compile Include="Core\JsonContentNegotiator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -71,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj">
+      <Project>{b77be544-4017-4783-8642-38707cce40f8}</Project>
+      <Name>PriceAggregator.Core.DataEntity.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj">
       <Project>{c3498509-2e9d-434a-8456-075802c881c1}</Project>
       <Name>PriceAggregator.Core.Exceptions</Name>

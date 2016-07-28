@@ -1,31 +1,33 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using PriceAggregator.Core.DataEntity.Base;
-using PriceAggregator.Core.DictionaryProvider.Interfaces;
 using Web.Api.Common.Core.Filters;
+using Web.Api.Common.Core.Formatters;
 using Web.Dictionary.Controllers.Base;
 
 namespace Web.Dictionary.Controllers
 {
-    [EnableCors("*", "*", "*")]
+    [EnableCors("*", "*", "*", "*", SupportsCredentials = true)]
     [RoutePrefix("api/dictionary")]
     //[Authorize]
     public class DictionaryController : BaseController
     {
-        private IHttpActionResult DynamicExecute(string typeName, string methodName, object[] parameters,
-            object dictionaryItem = null)
+        private HttpResponseMessage DynamicExecute(string typeName, string methodName, object[] parameters,
+            object dictionaryItem = null, MediaTypeFormatter formatter = null)
         {
-            var types = GetSupportedTypes(Configuration);
+            var types = GetSupportedTypes(Configuration).ToList();
             if (
                 types.All(type => string.Compare(type.Name, typeName, StringComparison.InvariantCultureIgnoreCase) != 0))
             {
-                return NotFound();
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
             }
-            
+
             var executor = new DictionaryDynamicExecutor(typeName, types);
             if (dictionaryItem != null)
             {
@@ -33,9 +35,37 @@ namespace Web.Dictionary.Controllers
             }
             var result = executor.Execute(Configuration.DependencyResolver, methodName, parameters);
             if (executor.IsResultEmpty(result))
-                return NotFound();
-              
-            return Ok(result);
+                return new HttpResponseMessage(HttpStatusCode.NotFound);
+
+
+            var negotiator = Configuration.Services.GetContentNegotiator();
+
+            ContentNegotiationResult negotiationResult = null;
+
+            if (formatter == null)
+            {
+                negotiationResult =
+                    negotiator.Negotiate(
+                        result.GetType(), Request, Configuration.Formatters);
+
+                if (negotiationResult == null)
+                {
+                    var response = new HttpResponseMessage(HttpStatusCode.NotAcceptable);
+                    throw new HttpResponseException(response);
+                }
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK)
+            {
+                Content = new ObjectContent(
+                    result.GetType(),
+                    result,
+                    formatter ?? negotiationResult.Formatter,
+                    formatter != null
+                        ? formatter.SupportedMediaTypes[0].MediaType
+                        : negotiationResult.MediaType.MediaType
+                    )
+            };
         }
 
         [Route("types")]
@@ -47,7 +77,7 @@ namespace Web.Dictionary.Controllers
             return Ok(list.Select(t => t.Name));
         }
 
-        private  IEnumerable<Type> GetSupportedTypes(HttpConfiguration configuration)
+        private IEnumerable<Type> GetSupportedTypes(HttpConfiguration configuration)
         {
             var service =
                 (ISupportedDataEntities) configuration.DependencyResolver.GetService(typeof(ISupportedDataEntities));
@@ -57,28 +87,40 @@ namespace Web.Dictionary.Controllers
 
         [Route("{typeName:alpha}/list")]
         [HttpGet]
-        public IHttpActionResult GetList(string typeName)
+        public HttpResponseMessage GetList(string typeName)
+
         {
             return DynamicExecute(typeName, "GetList", new object[] {null, null, null});
         }
 
+
+        [Route("{typeName:alpha}/list/csv")]
+        [HttpGet]
+        public HttpResponseMessage GetCsvList(string typeName)
+
+        {
+            var formatter = Configuration.Formatters.FirstOrDefault(item=>item.GetType()== typeof(CsvFormater));
+
+            return DynamicExecute(typeName, "GetList", new object[] {null, null, null}, null, formatter);
+        }
+
         [Route("{typeName:alpha}/list/{pageIndex:int}")]
         [HttpGet]
-        public IHttpActionResult GetList(string typeName, int pageIndex)
+        public HttpResponseMessage GetList(string typeName, int pageIndex)
         {
             return DynamicExecute(typeName, "GetList", new object[] {pageIndex, null, null});
         }
 
         [Route("{typeName:alpha}/list/{pageIndex:int}/{pageSize:int}")]
         [HttpGet]
-        public IHttpActionResult GetList(string typeName, int pageIndex, int pageSize)
+        public HttpResponseMessage GetList(string typeName, int pageIndex, int pageSize)
         {
             return DynamicExecute(typeName, "GetList", new object[] {pageIndex, pageSize, null});
         }
 
         [Route("{typeName:alpha}/list/{pageIndex:int}/{pageSize:int}/{sortName}")]
         [HttpGet]
-        public IHttpActionResult GetList(string typeName, int? pageIndex, int? pageSize = null,
+        public HttpResponseMessage GetList(string typeName, int? pageIndex, int? pageSize = null,
             string sortName = null)
         {
             return DynamicExecute(typeName, "GetList", new object[] {pageIndex, pageSize, sortName});
@@ -86,7 +128,7 @@ namespace Web.Dictionary.Controllers
 
         [Route("{typeName:alpha}/list/count")]
         [HttpGet]
-        public IHttpActionResult GetCount(string typeName)
+        public HttpResponseMessage GetCount(string typeName)
         {
             return DynamicExecute(typeName, "GetCount", null);
         }
@@ -95,7 +137,7 @@ namespace Web.Dictionary.Controllers
         [Route("{typeName:alpha}/{id:int}")]
         [HttpGet]
         [ObjectDoesNotExistFilter]
-        public IHttpActionResult GetItem(string typeName, int id)
+        public HttpResponseMessage GetItem(string typeName, int id)
         {
             return DynamicExecute(typeName, "GetItem", new object[] {id});
         }
@@ -103,7 +145,7 @@ namespace Web.Dictionary.Controllers
         [Route("{typeName:alpha}")]
         [HttpPost]
         [ObjectAlreadyExistsFilter]
-        public IHttpActionResult Post(string typeName, [FromBody] object item)
+        public HttpResponseMessage Post(string typeName, [FromBody] object item)
         {
             return DynamicExecute(typeName, "CreateItem", null, item);
         }
@@ -112,7 +154,7 @@ namespace Web.Dictionary.Controllers
         [Route("{typeName:alpha}/{id:int}")]
         [HttpPut]
         [ObjectDoesNotExistFilter]
-        public IHttpActionResult Put(string typeName, int id, [FromBody] object item)
+        public HttpResponseMessage Put(string typeName, int id, [FromBody] object item)
         {
             return DynamicExecute(typeName, "UpdateItem", null, item);
         }
@@ -120,7 +162,7 @@ namespace Web.Dictionary.Controllers
         [Route("{typeName:alpha}/{id:int}")]
         [HttpDelete]
         [ObjectDoesNotExistFilter]
-        public IHttpActionResult Delete(string typeName, int id)
+        public HttpResponseMessage Delete(string typeName, int id)
         {
             return DynamicExecute(typeName, "DeleteItem", new object[] {id});
         }

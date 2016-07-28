@@ -21,7 +21,7 @@ namespace PriceAggregator.Core.DataEntity
 
         public override string ToString()
         {
-            return String.Format("[Id={0},Name={1},Description={2}]", Id, Name, Description);
+            return $"[Id={Id},Name={Name},Description={Description}]";
         }
     }
 }
