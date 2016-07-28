@@ -40,31 +40,29 @@ namespace Web.Dictionary.Controllers
 
             var negotiator = Configuration.Services.GetContentNegotiator();
 
-            ContentNegotiationResult negotiationResult = null;
-
+            var mediaType = "application/json";
             if (formatter == null)
             {
-                negotiationResult =
-                    negotiator.Negotiate(
-                        result.GetType(), Request, Configuration.Formatters);
+                var negotiationResult = negotiator.Negotiate(
+                    result.GetType(), Request, Configuration.Formatters);
 
                 if (negotiationResult == null)
                 {
                     var response = new HttpResponseMessage(HttpStatusCode.NotAcceptable);
                     throw new HttpResponseException(response);
                 }
+
+                formatter = negotiationResult.Formatter;
+                mediaType = negotiationResult.MediaType.MediaType;
+            }
+            else if (formatter.SupportedMediaTypes.Count > 0)
+            {
+                mediaType = formatter.SupportedMediaTypes[0].MediaType;
             }
 
             return new HttpResponseMessage(HttpStatusCode.OK)
             {
-                Content = new ObjectContent(
-                    result.GetType(),
-                    result,
-                    formatter ?? negotiationResult.Formatter,
-                    formatter != null
-                        ? formatter.SupportedMediaTypes[0].MediaType
-                        : negotiationResult.MediaType.MediaType
-                    )
+                Content = new ObjectContent(result.GetType(), result, formatter, mediaType)
             };
         }
 
@@ -99,8 +97,7 @@ namespace Web.Dictionary.Controllers
         public HttpResponseMessage GetCsvList(string typeName)
 
         {
-            var formatter = Configuration.Formatters.FirstOrDefault(item=>item.GetType()== typeof(CsvFormater));
-
+            var formatter = Configuration.Formatters.FirstOrDefault(item => item.GetType() == typeof(CsvFormater));
             return DynamicExecute(typeName, "GetList", new object[] {null, null, null}, null, formatter);
         }
 
