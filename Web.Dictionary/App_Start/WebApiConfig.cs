@@ -1,4 +1,6 @@
 ﻿using System.Configuration;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Microsoft.Owin.Security.OAuth;
@@ -19,9 +21,14 @@ namespace Web.Dictionary
             json.UseDataContractJsonSerializer = false;
             var xml = GlobalConfiguration.Configuration.Formatters.XmlFormatter;
             xml.UseXmlSerializer = false;
+
             config.Formatters.Clear();
             config.Formatters.Add(json);
             config.Formatters.Add(new CsvFormater());
+
+            var bson = new BsonMediaTypeFormatter();
+            bson.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/vnd.contoso"));
+            config.Formatters.Add(bson);
 
             //config.SuppressDefaultHostAuthentication();
             //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
