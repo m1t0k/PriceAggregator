@@ -41,6 +41,15 @@ app.factory("dictionaryFactory",
                 );
         };
 
+        factory.downloadCsv = function (type, successHandler, errorHandler) {
+            console.log(factory.baseUrl + "/" + type + "/list/csv");
+            return $http.get(factory.baseUrl + "/" + type + "/list/csv")
+                .then(
+                    function(response) { successHandler(response); },
+                    function(response) { errorHandler(response); }
+                );
+        };
+
         factory.createItem = function(type, item, successHandler, errorHandler) {
             return $http.post(factory.baseUrl + "/" + type + "/", item)
                 .then(

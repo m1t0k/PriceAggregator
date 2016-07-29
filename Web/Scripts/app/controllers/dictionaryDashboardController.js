@@ -2,11 +2,11 @@
 app.controller("dictionaryDashboardController",
 [
     "$scope", "$location", "$http", "$routeParams", "dictionaryFactory",
-    function ($scope, $location, $http, $routeParams, dictionaryFactory) {
+    function($scope, $location, $http, $routeParams, dictionaryFactory) {
 
         $scope.className = "";
         $scope.errorMessage = "";
-     
+
         $scope.currentType = "";
         $scope.pageIndex = 1;
         $scope.pageSize = 20;
@@ -19,13 +19,13 @@ app.controller("dictionaryDashboardController",
         $scope.typeList = [];
         $scope.pageSizes = [10, 15, 20, 50, 100];
 
-        $scope.errorHandler = function () {
+        $scope.errorHandler = function() {
             $scope.className = "alert alert-danger";
             $scope.errorMessage = "error occured";
             console.log(11);
             //messageHandler.showError("error occured.");
         };
-        
+
         $scope.changePageIndex = function(pageIndex) {
             if (angular.isDefined(pageIndex))
                 $scope.pageIndex = pageIndex;
@@ -62,14 +62,14 @@ app.controller("dictionaryDashboardController",
 
         $scope.switchToCreateView = function() {
             if ($scope.isDictionaryTypeDefined()) {
-                $location.path('create/'+$scope.currentType);
+                $location.path("create/" + $scope.currentType);
             }
         };
 
-        $scope.switchToEditView = function (item) {
+        $scope.switchToEditView = function(item) {
 
             if (angular.isDefined(item)) {
-                $location.path('edit/' + $scope.currentType+'/'+item.Id);
+                $location.path("edit/" + $scope.currentType + "/" + item.Id);
             }
         };
 
@@ -80,25 +80,33 @@ app.controller("dictionaryDashboardController",
         };
 
 
-        $scope.resultIsNotEmpty = function () {
+        $scope.resultIsNotEmpty = function() {
             return $scope.itemCount > 0 && $scope.itemList.length > 0;
         };
-        
-        $scope.resetItemData = function () {            
+
+        $scope.resetItemData = function() {
             $scope.itemList = [];
             $scope.itemCount = 0;
 
         };
 
-        $scope.refreshData = function () {
+        $scope.refreshData = function() {
             $scope.resetItemData();
             $scope.getCount();
             $scope.getList();
         };
 
-        $scope.getList = function(type, pageIndex, pageSize, sortName) {
+        $scope.downloadCsv = function () {
+           dictionaryFactory.downloadCsv($scope.currentType,
+                function(response) {
+
+                },
+                $scope.errorHandler);
+        };
+
+        $scope.getList = function(type,pageIndex, pageSize, sortName) {
             if (angular.isDefined(type))
-                $scope.dictionaryFactory.currentType = type;
+                $scope.currentType = type;
 
             if (angular.isDefined(pageIndex))
                 $scope.pageIndex = pageIndex;
@@ -120,7 +128,7 @@ app.controller("dictionaryDashboardController",
         };
 
         $scope.isDictionaryTypeDefined = function() {
-            return angular.isDefined($scope.currentType) && $scope.currentType.length>0;
+            return angular.isDefined($scope.currentType) && $scope.currentType.length > 0;
         };
 
         $scope.getCount = function() {
@@ -162,7 +170,7 @@ app.controller("dictionaryDashboardController",
             if (angular.isDefined($routeParams.type)) {
                 $scope.currentType = $routeParams.type;
             }
-       
+
             if ($scope.isDictionaryTypeDefined()) {
                 $scope.refreshData();
             }

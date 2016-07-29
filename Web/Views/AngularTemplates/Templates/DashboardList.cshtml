@@ -16,16 +16,21 @@
 
 
     <div ng-show="isDictionaryTypeDefined()">
-        <div>
-            <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
-        </div>
 
-        <p>
+        <div class="btn-toolbar" role="toolbar" aria-label="...">
+
+
+            <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
+
             <button class="btn btn-xs btn-primary" type="button" ng-click="switchToCreateView()" data-title="Edit category {{ category.Name}}">
                 <i class="glyphicon glyphicon-create"></i> Create
             </button>
-        </p>
 
+
+            <button class="btn btn-xs btn-primary" type="button" ng-click="downloadCsv()" data-title="Download CSV">
+                <i class="glyphicon glyphicon-create"></i> Download CSV
+            </button>
+        </div>
         <table class="table" ng-show="resultIsNotEmpty()">
             <tr>
                 <td colspan="3">
