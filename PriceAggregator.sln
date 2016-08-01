@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DataAc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Web.Api.Common", "Web.Api.Common\PriceAggregator.Web.Api.Common.csproj", "{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.BusinessLogic", "Web.BusinessLogic\Web.BusinessLogic.csproj", "{75D7BFCC-64E2-4DE7-A9A9-4622E90CA530}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D7BFCC-64E2-4DE7-A9A9-4622E90CA530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D7BFCC-64E2-4DE7-A9A9-4622E90CA530}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D7BFCC-64E2-4DE7-A9A9-4622E90CA530}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D7BFCC-64E2-4DE7-A9A9-4622E90CA530}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

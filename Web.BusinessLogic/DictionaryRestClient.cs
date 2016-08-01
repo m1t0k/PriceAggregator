@@ -180,5 +180,20 @@ namespace Web.BusinessLogic
             var client = new RestClient {BaseUrl = new Uri(_baseApiUrl)};
             return client;
         }
+
+        bool IDictionaryProvider<T>.CreateItem(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IDictionaryProvider<T>.UpdateItem(T item)
+        {
+            throw new NotImplementedException();
+        }
+
+        bool IDictionaryProvider<T>.DeleteItem(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
