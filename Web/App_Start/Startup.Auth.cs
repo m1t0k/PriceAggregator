@@ -5,6 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Owin;
 using PriceAggregator.Web.Models;
+using System.Configuration;
 
 namespace PriceAggregator.Web
 {
@@ -34,7 +35,7 @@ namespace PriceAggregator.Web
                             TimeSpan.FromMinutes(30),
                             (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });
+        });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.

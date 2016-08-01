@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Reflection;
+using System.Collections.Generic;
+using System.Web;
 using System.Web.Mvc;
 using PriceAggergator.Core.Logging.Inteface;
 using PriceAggregator.Core.DataEntity;
@@ -9,6 +10,12 @@ using PriceAggregator.Core.Logging;
 using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
+using PriceAggregator.Web.Controllers;
+using Microsoft.AspNet.Identity;
+using Microsoft.Owin;
+using Microsoft.Owin.Security;
+using PriceAggregator.Web.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace PriceAggregator.Web.Core.IoC
 {
@@ -32,15 +39,36 @@ namespace PriceAggregator.Web.Core.IoC
             {
                 container.Register(reg.Type);
             }
-
+            
             container.Register<ILoggingService, NLogLoggingService>(scope);
             container.Register(() => new Lazy<ILoggingService>(container.GetInstance<ILoggingService>), scope);
+            /* container.Register<IAuthenticationManager>(
+     () => System.Web.HttpContext.Current.GetOwinContext().Authentication, scope);*/
 
+     //       container.Register<IOwinContext>(() => HttpContext.Current.GetOwinContext(),scope);
+
+
+            container.RegisterPerWebRequest<IAuthenticationManager>(() =>
+     container.IsVerifying
+        ? new OwinContext(new Dictionary<string, object>()).Authentication
+        : HttpContext.Current.GetOwinContext().Authentication);
+
+            //container.Register<IAuthenticationManager>(typeof(),scope);
+
+            container.Register(typeof(ApplicationDbContext));
+            container.Register(typeof(IUserStore<ApplicationUser>),()=> new UserStore<ApplicationUser>(container.GetInstance<ApplicationDbContext>()),scope);
+            
             // This is an extension method from the integration package.
-            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            container.Register<AngularTemplatesController>(scope);
+            container.Register<DashboardController>(scope);
+            container.Register<HomeController>(scope);
+
+            //.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+
+            //container.RegisterMvcControllers() 
             container.RegisterMvcIntegratedFilterProvider();
 
-            container.Verify();
+            //container.Verify();
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
         }

@@ -1,4 +1,5 @@
 ﻿@using PriceAggregator.Web.Models
+
 @model PriceAggregator.Web.Models.LoginViewModel
 @{
     ViewBag.Title = "Log in";
@@ -8,6 +9,7 @@
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
+
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
@@ -28,6 +30,7 @@
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
+         
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <div class="checkbox">

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -15,13 +16,13 @@ namespace PriceAggregator.Web.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        /*
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+                public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IAuthenticationManager authenticationManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            AuthenticationManager = authenticationManager;
         }
-        */
+        
 
         public ApplicationSignInManager SignInManager
         {
@@ -58,11 +59,17 @@ namespace PriceAggregator.Web.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+            var user = await UserManager.FindAsync(model.Email, model.Password);
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Invalid login attempt.");
+                return View(model);
+            }
+            var result=await SignInManager.PasswordSignInAsync(model.Email, model.Password, false,model.RememberMe);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return await RedirectToLocal(user,returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -422,7 +429,7 @@ namespace PriceAggregator.Web.Controllers
 
         private IAuthenticationManager AuthenticationManager
         {
-            get { return HttpContext.GetOwinContext().Authentication; }
+            get; set;
         }
 
         private void AddErrors(IdentityResult result)
@@ -431,6 +438,19 @@ namespace PriceAggregator.Web.Controllers
             {
                 ModelState.AddModelError("", error);
             }
+        }
+
+
+        private async Task<ActionResult> RedirectToLocal(ApplicationUser user,string returnUrl) {
+
+            var roles = await UserManager.GetRolesAsync(user.Id);
+            if (roles.Contains("users"))
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else 
+               return RedirectToAction("Index", "Dashboard");
+
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
