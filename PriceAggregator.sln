@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Core.DataAc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Web.Api.Common", "Web.Api.Common\PriceAggregator.Web.Api.Common.csproj", "{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.BusinessLogic", "Web.BusinessLogic\Web.BusinessLogic.csproj", "{75D7BFCC-64E2-4DE7-A9A9-4622E90CA530}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceAggregator.Web.BusinessLogic", "Web.BusinessLogic\PriceAggregator.Web.BusinessLogic.csproj", "{75D7BFCC-64E2-4DE7-A9A9-4622E90CA530}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
