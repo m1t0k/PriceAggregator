@@ -212,8 +212,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Core\ConfigurationProvider.cs" />
-    <Compile Include="Core\IoC\SimpleInjectorIoC.cs" />
+    <Compile Include="App_Start\IoC\ConfigurationProvider.cs" />
+    <Compile Include="App_Start\IoC\SimpleInjectorIoC.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -4348,6 +4348,10 @@
     <ProjectReference Include="..\Core.Logging\PriceAggregator.Core.Logging.csproj">
       <Project>{57d0f4d7-8d86-42c1-ac85-cc24a178c4fc}</Project>
       <Name>PriceAggregator.Core.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.BusinessLogic\PriceAggregator.Web.BusinessLogic.csproj">
+      <Project>{75d7bfcc-64e2-4de7-a9a9-4622e90ca530}</Project>
+      <Name>PriceAggregator.Web.BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

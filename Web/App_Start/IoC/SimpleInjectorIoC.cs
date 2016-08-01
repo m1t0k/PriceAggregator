@@ -16,7 +16,7 @@ using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 
-namespace PriceAggregator.Web.Core.IoC
+namespace PriceAggregator.Web.IoC
 {
     public class SimpleInjectorIoC
     {
@@ -42,13 +42,15 @@ namespace PriceAggregator.Web.Core.IoC
 
             container.Register<ILoggingService, NLogLoggingService>(scope);
             container.Register(() => new Lazy<ILoggingService>(container.GetInstance<ILoggingService>), scope);
-     
+
             container.RegisterPerWebRequest(() =>
                 container.IsVerifying
                     ? new OwinContext(new Dictionary<string, object>()).Authentication
                     : HttpContext.Current.GetOwinContext().Authentication);
 
-     
+            container.Register(
+                () => ConfigurationProvider.CreateDictionaryRestClient(container.GetInstance<ILoggingService>()));
+
             container.Register(typeof (ApplicationDbContext));
             container.Register(typeof (IUserStore<ApplicationUser>),
                 () => new UserStore<ApplicationUser>(container.GetInstance<ApplicationDbContext>()), scope);
