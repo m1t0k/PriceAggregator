@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using PriceAggergator.Core.Logging.Inteface;
 using PriceAggregator.Core.DataEntity.Base;
 using RestSharp;
@@ -23,111 +20,21 @@ namespace PriceAggregator.Web.BusinessLogic.Helpers
             if (logger == null)
                 throw new ArgumentNullException(nameof(logger));
 
-
             _logger = logger;
-            _baseApiUrl = $"{baseUrl}/api/dictionary/";
+            _baseApiUrl = $"{baseUrl}/";
             _apiKey = apiKey;
         }
 
-        public T GetItem<T>(int id) where T : BaseEntity
+        public async Task<IRestResponse> GetListAsync(string typeName, int? pageIndex, int? pageSize,
+            string sortExpression)
         {
             try
             {
-                var client = GetRestClientInstance<T>();
-
-                var request = new RestRequest(Method.GET)
-                {
-                    Resource = $"{typeof (T).Name.ToLower()}/{id}"
-                };
-
-                var response = client.Execute(request);
-
-                return ParseGetResponse<T>(response);
-            }
-            catch (Exception e)
-            {
-                _logger.Error(e);
-                throw;
-            }
-        }
-
-        public void CreateItem<T>(T item) where T : BaseEntity
-        {
-            try
-            {
-                var client = GetRestClientInstance<T>();
-
-                var request = new RestRequest(Method.PUT);
-
-                var response = client.Execute(request);
-
-                if (response.StatusCode != HttpStatusCode.OK)
-                    throw new Exception(response.ErrorMessage);
-            }
-            catch (Exception e)
-            {
-                _logger.Error(e);
-                throw;
-            }
-        }
-
-        public void UpdateItem<T>(T item) where T : BaseEntity
-        {
-            try
-            {
-                var client = GetRestClientInstance<T>();
-
-                var request = new RestRequest(Method.POST);
-
-                var response = client.Execute(request);
-
-                if (response.StatusCode != HttpStatusCode.OK)
-                    throw new Exception(response.ErrorMessage);
-            }
-            catch (Exception e)
-            {
-                _logger.Error(e);
-                throw;
-            }
-        }
-
-        public void DeleteItem<T>(int id) where T : BaseEntity
-        {
-            try
-            {
-                var client = GetRestClientInstance<T>();
-
-                var request = new RestRequest(Method.DELETE)
-                {
-                    Resource = $"/{id}"
-                };
-
-                var response = client.Execute(request);
-
-                if (response.StatusCode != HttpStatusCode.OK)
-                    throw new Exception(response.ErrorMessage);
-            }
-            catch (Exception e)
-            {
-                _logger.Error(e);
-                throw;
-            }
-        }
-
-        public IEnumerable<T> GetList<T>(int? pageIndex, int? pageSize, string sortExpression) where T : BaseEntity
-        {
-            try
-            {
-                var client = GetRestClientInstance<T>();
-
                 var request = new RestRequest(Method.GET)
                 {
                     Resource = $"/list/{pageIndex ?? 1}/{pageSize ?? 20}/{sortExpression}"
                 };
-
-                var response = client.Execute(request);
-
-                return ParseGetResponse<List<T>>(response);
+                return await ExecuteAsync(typeName, request);
             }
             catch (Exception e)
             {
@@ -136,44 +43,15 @@ namespace PriceAggregator.Web.BusinessLogic.Helpers
             }
         }
 
-        public Task<IEnumerable<T>> GetListAsync<T>(int? pageIndex, int? pageSize, string sortExpression)
-            where T : BaseEntity
+        public async Task<IRestResponse> GetCountAsync(string typeName)
         {
             try
             {
-                var client = GetRestClientInstance<T>();
-
-                var request = new RestRequest(Method.GET)
-                {
-                    Resource = $"/list/{pageIndex ?? 1}/{pageSize ?? 20}/{sortExpression}"
-                };
-                var tcs = new TaskCompletionSource<IEnumerable<T>>();
-
-                client.ExecuteAsync<List<T>>(request, (response, t) => { ParseGetResponse(response, tcs); });
-
-                return tcs.Task;
-            }
-            catch (Exception e)
-            {
-                _logger.Error(e);
-                throw;
-            }
-        }
-
-        public Task<int> GetCountAsync<T>() where T : BaseEntity
-        {
-            try
-            {
-                var client = GetRestClientInstance<T>();
                 var request = new RestRequest(Method.GET)
                 {
                     Resource = "/list/count"
                 };
-                var tcs = new TaskCompletionSource<int>();
-
-                client.ExecuteAsync<T>(request, (response, t) => { ParseGetResponse(response, tcs); });
-
-                return tcs.Task;
+                return await ExecuteAsync(typeName, request);
             }
             catch (Exception e)
             {
@@ -182,40 +60,15 @@ namespace PriceAggregator.Web.BusinessLogic.Helpers
             }
         }
 
-        public int GetCount<T>() where T : BaseEntity
+        public async Task<IRestResponse> GetTypesAsync()
         {
             try
             {
-                var client = GetRestClientInstance<T>();
-                var request = new RestRequest(Method.GET)
-                {
-                    Resource = "/list/count"
-                };
-                var response = client.Execute(request);
-
-                return ParseGetResponse<int>(response);
-            }
-            catch (Exception e)
-            {
-                _logger.Error(e);
-                throw;
-            }
-        }
-
-        public IEnumerable<string> GetTypes()
-        {
-            try
-            {
-                var client = GetRestClientInstance("");
-
                 var request = new RestRequest(Method.GET)
                 {
                     Resource = "types"
                 };
-
-                var response = client.Execute(request);
-
-                return ParseGetResponse<List<string>>(response);
+                return await ExecuteAsync("", request);
             }
             catch (Exception e)
             {
@@ -224,53 +77,96 @@ namespace PriceAggregator.Web.BusinessLogic.Helpers
             }
         }
 
-        public void Dispose()
+        public async Task<IRestResponse> CreateItemAsync(string typeName, BaseEntity item)
         {
-            //throw new NotImplementedException();
-        }
-
-        private static T ParseGetResponse<T>(IRestResponse response)
-        {
-            switch (response.StatusCode)
+            try
             {
-                case HttpStatusCode.OK:
-                    return JsonConvert.DeserializeObject<T>(response.Content);
-                case HttpStatusCode.NotFound:
-                    return default(T);
-            }
+                if (item == null)
+                    throw new ArgumentNullException(nameof(item));
 
-            throw new Exception(response.ErrorMessage);
+                var request = new RestRequest(Method.POST) {RequestFormat = DataFormat.Json};
+                return await ExecuteAsync(typeName, request);
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e);
+                throw;
+            }
         }
 
-        private static Task<T> ParseGetResponse<T>(IRestResponse response, TaskCompletionSource<T> tcs)
+        public async Task<IRestResponse> UpdateItemAsync(string typeName, BaseEntity item)
+        {
+            try
+            {
+                if (item == null)
+                    throw new ArgumentNullException(nameof(item));
+
+                var request = new RestRequest(Method.PUT) {RequestFormat = DataFormat.Json, Resource = $"/{item.Id}"};
+                return await ExecuteAsync(typeName, request);
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e);
+                throw;
+            }
+        }
+
+        public async Task<IRestResponse> DeleteItemAsync(string typeName, int id)
+        {
+            try
+            {
+                var request = new RestRequest(Method.DELETE)
+                {
+                    Resource = $"/{id}"
+                };
+                return await ExecuteAsync(typeName, request);
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e);
+                throw;
+            }
+        }
+
+        public async Task<IRestResponse> GetItemAsync(string typeName, int id)
+        {
+            try
+            {
+                var request = new RestRequest(Method.GET)
+                {
+                    Resource = $"{id}"
+                };
+                return await ExecuteAsync(typeName, request);
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e);
+                throw;
+            }
+        }
+
+
+        private Task<IRestResponse> ExecuteAsync(string typeName, IRestRequest request)
+        {
+            var client = CreateRestClientInstance(typeName);
+            var tcs = new TaskCompletionSource<IRestResponse>();
+            client.ExecuteAsync(request, (response, t) => { ParseAsyncResponse(response, tcs); });
+            return tcs.Task;
+        }
+
+        private static void ParseAsyncResponse(IRestResponse response,
+            TaskCompletionSource<IRestResponse> tcs)
         {
             if (tcs == null)
                 throw new ArgumentNullException(nameof(tcs));
 
-            switch (response.StatusCode)
-            {
-                case HttpStatusCode.OK:
-                    tcs.SetResult(JsonConvert.DeserializeObject<T>(response.Content));
-                    break;
-                case HttpStatusCode.NotFound:
-                    tcs.SetResult(default(T));
-                    break;
-                default:
-                    tcs.SetException(new Exception(response.ErrorMessage));
-                    break;
-            }
-
-            return tcs.Task;
+            tcs.SetResult(response);
         }
 
-        private RestClient GetRestClientInstance<T>() where T : BaseEntity
-        {
-            return GetRestClientInstance(typeof (T).Name.ToLower());
-        }
-
-        private RestClient GetRestClientInstance(string typeName)
+        private RestClient CreateRestClientInstance(string typeName)
         {
             var client = new RestClient {BaseUrl = new Uri($"{_baseApiUrl}{typeName}")};
+
             client.AddDefaultHeader("ApiKey", _apiKey);
             return client;
         }

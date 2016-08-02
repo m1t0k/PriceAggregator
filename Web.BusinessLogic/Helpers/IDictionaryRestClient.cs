@@ -1,21 +1,17 @@
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using PriceAggregator.Core.DataEntity.Base;
+using RestSharp;
 
 namespace PriceAggregator.Web.BusinessLogic.Helpers
 {
     public interface IDictionaryRestClient
     {
-        T GetItem<T>(int id) where T : BaseEntity;
-        void CreateItem<T>(T item) where T : BaseEntity;
-        void UpdateItem<T>(T item) where T : BaseEntity;
-        void DeleteItem<T>(int id) where T : BaseEntity;
-        IEnumerable<T> GetList<T>(int? pageIndex, int? pageSize, string sortExpression) where T : BaseEntity;
-
-        Task<IEnumerable<T>> GetListAsync<T>(int? pageIndex, int? pageSize, string sortExpression)
-            where T : BaseEntity;
-
-        Task<int> GetCountAsync<T>() where T : BaseEntity;
-        int GetCount<T>() where T : BaseEntity;
+        Task<IRestResponse> GetListAsync(string typeName, int? pageIndex, int? pageSize, string sortExpression);
+        Task<IRestResponse> GetCountAsync(string typeName);
+        Task<IRestResponse> GetTypesAsync();
+        Task<IRestResponse> CreateItemAsync(string typeName, BaseEntity item);
+        Task<IRestResponse> UpdateItemAsync(string typeName, BaseEntity item);
+        Task<IRestResponse> DeleteItemAsync(string typeName, int id);
+        Task<IRestResponse> GetItemAsync(string typeName, int id);
     }
 }

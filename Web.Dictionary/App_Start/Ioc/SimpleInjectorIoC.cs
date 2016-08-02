@@ -64,15 +64,11 @@ namespace Web.Dictionary.Ioc
                 container.Register(lazyCacheType,
                     () => factoryMethod.Invoke(container.GetInstance(redisFactoryType), null), Lifestyle.Singleton);
             }
-            //container.Register<ApplicationUser>(scope);
-            //container.Register(typeof(IUserStore<ApplicationUser>),scope);
+           
             container.Register<ISupportedDataEntities, SupportedDataEntities>(Lifestyle.Singleton);
-
             container.Register<ILoggingService, NLogLoggingService>(scope);
             container.Register(() => new Lazy<ILoggingService>(container.GetInstance<ILoggingService>), scope);
             container.Register(typeof(IDictionaryProvider<>), typeof(DictionaryProvider<>), scope);
-
-            //container.Register(typeof(IUserStore<>),typeof(UserStore<>),scope);
             container.Register<ApplicationUser>(scope);
             container.Register<ApplicationDbContext>(scope);
 

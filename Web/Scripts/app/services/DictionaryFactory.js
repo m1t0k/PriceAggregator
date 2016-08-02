@@ -2,11 +2,10 @@
 
 app.factory("dictionaryFactory",
 [
-    "$http", function($http) {
-        //    delete $http.defaults.headers.common["X-Requested-With"];
-        var factory = {};
+    "$http", function ($http) {
 
-        factory.baseUrl = "";
+        var factory = {};
+        factory.baseUrl = "/Dictionary";
     
         factory.getList = function(type, pageIndex, pageSize, sortName, successHandler, errorHandler) {
             factory.itemList = [];
@@ -26,7 +25,7 @@ app.factory("dictionaryFactory",
         };
 
         factory.getTypes = function (successHandler, errorHandler) {
-            return $http.get(factory.baseUrl + "/types", { withCredentials: true, headers: { 'auth-token': 'C3PO R2D2' } })
+            return $http.get("/Dictionary/types", { withCredentials: true })
               .then(
                     function (response) { successHandler(response); },
                     function (response) { errorHandler(response); }

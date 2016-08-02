@@ -113,6 +113,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SimpleInjector, Version=3.2.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
       <HintPath>..\packages\SimpleInjector.3.2.0\lib\net45\SimpleInjector.dll</HintPath>
       <Private>True</Private>
@@ -210,6 +214,7 @@
     <Compile Include="Controllers\AngularTemplatesController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DictionaryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\IoC\ConfigurationProvider.cs" />
@@ -4289,7 +4294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\AngularTemplates\Templates\directives\" />
+    <Folder Include="Views\Dictionary\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

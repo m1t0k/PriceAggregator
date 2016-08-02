@@ -164,8 +164,7 @@ app.controller("dictionaryDashboardController",
                     $scope.errorHandler);
         };
 
-        $scope.init = function(url) {
-            dictionaryFactory.baseUrl = url;
+        $scope.init = function() {
             $scope.readDictionaryTypes();
             if (angular.isDefined($routeParams.type)) {
                 $scope.currentType = $routeParams.type;

@@ -49,7 +49,7 @@ namespace PriceAggregator.Web.IoC
                     : HttpContext.Current.GetOwinContext().Authentication);
 
             container.Register(
-                () => ConfigurationProvider.CreateDictionaryRestClient(container.GetInstance<ILoggingService>()));
+                () => ConfigurationProvider.CreateDictionaryRestClient(container.GetInstance<ILoggingService>()),scope);
 
             container.Register(typeof (ApplicationDbContext));
             container.Register(typeof (IUserStore<ApplicationUser>),
@@ -58,6 +58,7 @@ namespace PriceAggregator.Web.IoC
             // This is an extension method from the integration package.
             container.Register<AngularTemplatesController>(scope);
             container.Register<DashboardController>(scope);
+            container.Register<DictionaryController>(scope);
             container.Register<HomeController>(scope);
 
             container.RegisterMvcIntegratedFilterProvider();
