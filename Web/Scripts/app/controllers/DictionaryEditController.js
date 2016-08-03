@@ -2,7 +2,8 @@
 app.controller("dictionaryEditController",
 [
     "$scope", "$location", "$http", "$timeout", "$routeParams", "dictionaryFactory",
-    function($scope, $location, $http, $timeout, $routeParams, dictionaryFactory) {
+    function ($scope, $location, $http, $timeout, $routeParams, dictionaryFactory) {
+
         $scope.className = "";
         $scope.errorMessage = "";
 
@@ -11,9 +12,9 @@ app.controller("dictionaryEditController",
         $scope.id = $routeParams.id;
 
         $scope.$error = null;
-        $scope.initErrorMessage = "Can't init form.";
-        $scope.successMessage = "Item saved.";
-        $scope.errorMessage = "Error occured.";
+        //$scope.initErrorMessage = "";//"Can't init form.";
+        //$scope.successMessage = "";//"Item saved.";
+        //$scope.errorMessage = "";//"Error occured.";
 
         $scope.changeView = function(view) {
             $location.path(view);
@@ -21,17 +22,17 @@ app.controller("dictionaryEditController",
 
         $scope.initErrorHandler = function() {
             $scope.className = "alert alert-danger";
-            $scope.errorMessage = $scope.initErrorMessage;
+            $scope.errorMessage ="Can't init form";
         };
 
         $scope.successHandler = function() {
             $scope.className = "alert alert-success";
-            $scope.errorMessage = $scope.successMessage;
+            $scope.errorMessage ="Item successfully saved.";
         };
 
         $scope.errorHandler = function() {
             $scope.className = "alert alert-danger";
-            $scope.errorMessage = $scope.errorMessage;
+            $scope.errorMessage = "Error occured.";
         };
 
         $scope.submitForm = function() {
@@ -51,8 +52,8 @@ app.controller("dictionaryEditController",
                 $location.path('/');
         };
 
-        $scope.init = function( initErrorMessage, successMessage, errorMessage) {
-         
+        $scope.init = function(/* initErrorMessage, successMessage, errorMessage*/) {
+         /*
             if (angular.isDefined(initErrorMessage))
                 $scope.initErrorMessage = initErrorMessage;
 
@@ -61,7 +62,7 @@ app.controller("dictionaryEditController",
 
             if (angular.isDefined(errorMessage))
                 $scope.errorMessage = errorMessage;
-
+         */
             if (angular.isDefined($scope.id)) {
                 dictionaryFactory.getItem($scope.type,
                     $scope.id,

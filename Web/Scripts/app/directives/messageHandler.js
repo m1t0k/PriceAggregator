@@ -8,6 +8,6 @@ app.directive("messagehandler", function() {
             classname: "=",
             errormessage: "="
         },
-        template: "<div ngShow='angular.IsDefined($scope.errormessage);' class='{{classname}}'>{{errormessage}}</div>"
+        template: "<div class='{{classname}}'>{{errormessage}}</div>"
     };
 });
