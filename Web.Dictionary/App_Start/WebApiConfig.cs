@@ -36,7 +36,7 @@ namespace Web.Dictionary
             config.Services.Replace(typeof(IExceptionHandler), new GlobalExecutionErrorHandler());
             config.Services.Add(typeof(IExceptionLogger), new GlobalExceptionLogger());
             config.MessageHandlers.Add(new LoggingHandler());
-            //config.MessageHandlers.Add(new ApiKeyHandler());
+            config.MessageHandlers.Add(new ApiKeyHandler());
 
             
             // Web API configuration and services

@@ -1,25 +1,21 @@
 ﻿@using PriceAggregator.Web.App_LocalResources
-@using PriceAggregator.Web.IoC
 @{
     Layout = null;
 }
 
 
-<div ng-controller="dictionaryDashboardController" ng-init="init()">
+<div ng-controller="dictionaryController">
+
+    <messagehandler classname="className" errormessage="errorMessage"></messagehandler>
 
 
     <div>
         <select ng-model="currentType" ng-options="x for x in typeList" ng-change="changeType()"></select>
     </div>
-
-    <hello3 classname="className" errormessage="errorMessage"></hello3>
-
-
+    
     <div ng-show="isDictionaryTypeDefined()">
 
         <div class="btn-toolbar" role="toolbar" aria-label="...">
-
-
             <select ng-model="pageSize" ng-options="x for x in pageSizes" ng-change="changePageSize()"></select>
 
             <button class="btn btn-xs btn-primary" type="button" ng-click="switchToCreateView()" data-title="Edit category {{ category.Name}}">

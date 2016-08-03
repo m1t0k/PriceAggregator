@@ -41,7 +41,7 @@ app.factory("dictionaryFactory",
         };
 
         factory.downloadCsv = function (type, successHandler, errorHandler) {
-            console.log(factory.baseUrl + "/" + type + "/list/csv");
+    
             return $http.get(factory.baseUrl + "/" + type + "/list/csv")
                 .then(
                     function(response) { successHandler(response); },
@@ -58,8 +58,14 @@ app.factory("dictionaryFactory",
         };
 
         factory.updateItem = function(type, item, successHandler, errorHandler) {
-            return $http.put(factory.baseUrl + "/" + type + "/" + item.Id, item)
-                .then(
+            $http({
+                method: "PUT",
+                url: factory.baseUrl + "/" + type + "/" + item.Id,
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                data:item
+            }).then(
                     function(response) { successHandler(response); },
                     function(response) { errorHandler(response); }
                 );

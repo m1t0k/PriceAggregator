@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using PriceAggergator.Core.Logging.Inteface;
-using PriceAggregator.Core.DataEntity.Base;
 using PriceAggregator.Web.BusinessLogic.Helpers;
+using PriceAggregator.Web.Common;
 using RestSharp;
 
 namespace PriceAggregator.Web.Controllers
@@ -38,26 +37,22 @@ namespace PriceAggregator.Web.Controllers
                     return new ContentResult
                     {
                         Content = response.Content,
-                        ContentEncoding= !string.IsNullOrWhiteSpace(response.ContentEncoding)? Encoding.GetEncoding(response.ContentEncoding):null,
+                        ContentEncoding =
+                            !string.IsNullOrWhiteSpace(response.ContentEncoding)
+                                ? Encoding.GetEncoding(response.ContentEncoding)
+                                : null,
                         ContentType = response.ContentType
                     };
                 case HttpStatusCode.NotFound:
                     return HttpNotFound();
             }
 
-            throw new HttpRequestException(response.ErrorMessage);
+            return new HttpStatusCodeResult(response.StatusCode, response.ErrorException?.ToString() ?? response.Content);
         }
 
-        private  ActionResult ParseActionResponse(IRestResponse response)
+        private ActionResult ParseActionResponse(IRestResponse response)
         {
-            switch (response.StatusCode)
-            {
-                case HttpStatusCode.OK:
-                    return new HttpStatusCodeResult(response.StatusCode);
-                case HttpStatusCode.NotFound:
-                    return HttpNotFound();
-            }
-            throw new HttpRequestException(response.ErrorMessage);
+            return new HttpStatusCodeResult(response.StatusCode, response.ErrorException?.ToString() ?? response.Content);
         }
 
         [Route("types")]
@@ -128,7 +123,7 @@ namespace PriceAggregator.Web.Controllers
 
         [Route("{typeName:alpha}")]
         [HttpPost]
-        public async Task<ActionResult> Post(string typeName, BaseEntity item)
+        public async Task<ActionResult> Post(string typeName, [DynamicJson] dynamic item)
         {
             var result = await _dictionaryRestClient.CreateItemAsync(typeName, item);
             return ParseActionResponse(result);
@@ -137,9 +132,9 @@ namespace PriceAggregator.Web.Controllers
 
         [Route("{typeName:alpha}/{id:int}")]
         [HttpPut]
-        public async Task<ActionResult> Put(string typeName, int id, BaseEntity item)
+        public async Task<ActionResult> Put(string typeName, int id, [DynamicJson] dynamic item)
         {
-            var result = await _dictionaryRestClient.UpdateItemAsync(typeName, item);
+            var result = await _dictionaryRestClient.UpdateItemAsync(typeName, id, item);
             return ParseActionResponse(result);
         }
 

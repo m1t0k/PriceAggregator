@@ -1,5 +1,5 @@
 ﻿"use strict";
-app.controller("dictionaryDashboardController",
+app.controller("dictionaryController",
 [
     "$scope", "$location", "$http", "$routeParams", "dictionaryFactory",
     function($scope, $location, $http, $routeParams, dictionaryFactory) {
@@ -22,9 +22,7 @@ app.controller("dictionaryDashboardController",
         $scope.errorHandler = function() {
             $scope.className = "alert alert-danger";
             $scope.errorMessage = "error occured";
-            console.log(11);
-            //messageHandler.showError("error occured.");
-        };
+       };
 
         $scope.changePageIndex = function(pageIndex) {
             if (angular.isDefined(pageIndex))
@@ -174,5 +172,7 @@ app.controller("dictionaryDashboardController",
                 $scope.refreshData();
             }
         };
+
+        $scope.init();
     }
 ]);

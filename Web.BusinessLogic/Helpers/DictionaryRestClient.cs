@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using PriceAggergator.Core.Logging.Inteface;
-using PriceAggregator.Core.DataEntity.Base;
 using RestSharp;
 
 namespace PriceAggregator.Web.BusinessLogic.Helpers
@@ -77,14 +77,16 @@ namespace PriceAggregator.Web.BusinessLogic.Helpers
             }
         }
 
-        public async Task<IRestResponse> CreateItemAsync(string typeName, BaseEntity item)
+        public async Task<IRestResponse> CreateItemAsync(string typeName, dynamic item)
         {
             try
             {
                 if (item == null)
                     throw new ArgumentNullException(nameof(item));
 
-                var request = new RestRequest(Method.POST) {RequestFormat = DataFormat.Json};
+                var request = new RestRequest(Method.POST);
+                AddJsonBodyToRequest(item, request);
+
                 return await ExecuteAsync(typeName, request);
             }
             catch (Exception e)
@@ -94,14 +96,16 @@ namespace PriceAggregator.Web.BusinessLogic.Helpers
             }
         }
 
-        public async Task<IRestResponse> UpdateItemAsync(string typeName, BaseEntity item)
+        public async Task<IRestResponse> UpdateItemAsync(string typeName, int id, dynamic item)
         {
             try
             {
                 if (item == null)
                     throw new ArgumentNullException(nameof(item));
 
-                var request = new RestRequest(Method.PUT) {RequestFormat = DataFormat.Json, Resource = $"/{item.Id}"};
+                var request = new RestRequest(Method.PUT) {Resource = $"/{id}"};
+                AddJsonBodyToRequest(item, request);
+
                 return await ExecuteAsync(typeName, request);
             }
             catch (Exception e)
@@ -145,11 +149,18 @@ namespace PriceAggregator.Web.BusinessLogic.Helpers
             }
         }
 
+        private static void AddJsonBodyToRequest(dynamic item, RestRequest request)
+        {
+            request.AddHeader("Content-Type", "application/json");
+            request.AddJsonBody(JsonConvert.SerializeObject(item));
+        }
+
 
         private Task<IRestResponse> ExecuteAsync(string typeName, IRestRequest request)
         {
             var client = CreateRestClientInstance(typeName);
             var tcs = new TaskCompletionSource<IRestResponse>();
+            client.AddDefaultHeader("ApiKey", _apiKey);
             client.ExecuteAsync(request, (response, t) => { ParseAsyncResponse(response, tcs); });
             return tcs.Task;
         }
@@ -166,8 +177,6 @@ namespace PriceAggregator.Web.BusinessLogic.Helpers
         private RestClient CreateRestClientInstance(string typeName)
         {
             var client = new RestClient {BaseUrl = new Uri($"{_baseApiUrl}{typeName}")};
-
-            client.AddDefaultHeader("ApiKey", _apiKey);
             return client;
         }
     }

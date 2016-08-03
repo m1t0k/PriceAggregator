@@ -2990,7 +2990,7 @@
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\controllers\dictionaryDashboardController.js" />
+    <Content Include="Scripts\app\controllers\dictionaryController.js" />
     <Content Include="Scripts\app\controllers\dictionaryEditController.js" />
     <Content Include="Scripts\app\directives\messageHandler.js" />
     <Content Include="Scripts\app\routes.js" />
@@ -4353,6 +4353,10 @@
     <ProjectReference Include="..\Core.Logging\PriceAggregator.Core.Logging.csproj">
       <Project>{57d0f4d7-8d86-42c1-ac85-cc24a178c4fc}</Project>
       <Name>PriceAggregator.Core.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PriceAggregator.Web.Common\PriceAggregator.Web.Common.csproj">
+      <Project>{f0cbb4a9-51f5-4772-a7c1-2201ffa48789}</Project>
+      <Name>PriceAggregator.Web.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Web.BusinessLogic\PriceAggregator.Web.BusinessLogic.csproj">
       <Project>{75d7bfcc-64e2-4de7-a9a9-4622e90ca530}</Project>

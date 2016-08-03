@@ -7,7 +7,7 @@ app.config([
         $routeProvider.when("/:type?",
             {
                 templateUrl: "/AngularTemplates/Inline?templateName=DashboardList",
-                controller: "dictionaryDashboardController",
+                controller: "dictionaryController",
                 controllerAs: "PaWeb"
             })
             .when("/create/:type/",

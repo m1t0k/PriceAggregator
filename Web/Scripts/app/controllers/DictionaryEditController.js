@@ -3,6 +3,8 @@ app.controller("dictionaryEditController",
 [
     "$scope", "$location", "$http", "$timeout", "$routeParams", "dictionaryFactory",
     function($scope, $location, $http, $timeout, $routeParams, dictionaryFactory) {
+        $scope.className = "";
+        $scope.errorMessage = "";
 
         $scope.type = $routeParams.type;
         $scope.item = { Id: 0 };
@@ -18,15 +20,18 @@ app.controller("dictionaryEditController",
         };
 
         $scope.initErrorHandler = function() {
-        //    growl.error($scope.initErrorMessage);
+            $scope.className = "alert alert-danger";
+            $scope.errorMessage = $scope.initErrorMessage;
         };
 
         $scope.successHandler = function() {
-          //  growl.success($scope.successMessage);
+            $scope.className = "alert alert-success";
+            $scope.errorMessage = $scope.successMessage;
         };
 
         $scope.errorHandler = function() {
-            ///growl.error($scope.errorMessage);
+            $scope.className = "alert alert-danger";
+            $scope.errorMessage = $scope.errorMessage;
         };
 
         $scope.submitForm = function() {
@@ -46,9 +51,8 @@ app.controller("dictionaryEditController",
                 $location.path('/');
         };
 
-        $scope.init = function(url, initErrorMessage, successMessage, errorMessage) {
-            dictionaryFactory.baseUrl = url;
-
+        $scope.init = function( initErrorMessage, successMessage, errorMessage) {
+         
             if (angular.isDefined(initErrorMessage))
                 $scope.initErrorMessage = initErrorMessage;
 
@@ -67,5 +71,7 @@ app.controller("dictionaryEditController",
                     $scope.initErrorHandler);
             };
         }
+
+        $scope.init();
     }
 ]);
