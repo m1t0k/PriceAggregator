@@ -1,5 +1,3 @@
-using System;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http.Controllers;
@@ -12,22 +10,16 @@ namespace Web.Api.Common.Core.Filters
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            try
-            {
-                if (actionContext.Request.Method != HttpMethod.Post && actionContext.Request.Method != HttpMethod.Put)
-                    return;
-                if (actionContext.ModelState.IsValid) return;
-                var logger =
-                    actionContext.Request.GetDependencyScope().GetService(typeof(ILoggingService)) as ILoggingService;
-                logger?.Error(actionContext.ModelState.ToString());
+            if (actionContext.Request.Method != HttpMethod.Post && actionContext.Request.Method != HttpMethod.Put)
+                return;
+            if (actionContext.ModelState.IsValid) return;
 
-                actionContext.Response = actionContext.Request.CreateErrorResponse(
-                    HttpStatusCode.BadRequest, actionContext.ModelState);
-            }
-            catch (Exception e)
-            {
-                Trace.TraceError(e.ToString());
-            }
+            var logger =
+                actionContext.Request.GetDependencyScope().GetService(typeof (ILoggingService)) as ILoggingService;
+            logger?.Error(actionContext.ModelState.ToString());
+
+            actionContext.Response = actionContext.Request.CreateErrorResponse(
+                HttpStatusCode.BadRequest, actionContext.ModelState);
         }
     }
 }

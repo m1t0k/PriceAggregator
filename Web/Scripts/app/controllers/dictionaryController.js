@@ -24,11 +24,17 @@ app.controller("dictionaryController",
             $scope.errorMessage = "error occured";
        };
 
-        $scope.changePageIndex = function(pageIndex) {
+        $scope.changePageIndex = function (pageIndex) {
+
             if (angular.isDefined(pageIndex))
                 $scope.pageIndex = pageIndex;
 
             $scope.refreshData();
+        };
+
+        $scope.changePageIndex2 = function (pageIndex) {
+
+            $scope.changePageIndex(pageIndex);
         };
 
         $scope.changePageSize = function(pageSize) {
@@ -88,7 +94,8 @@ app.controller("dictionaryController",
 
         };
 
-        $scope.refreshData = function() {
+        $scope.refreshData = function () {
+            console.log('$scope.refreshData');
             $scope.resetItemData();
             $scope.getCount();
             $scope.getList();
@@ -162,7 +169,8 @@ app.controller("dictionaryController",
                     $scope.errorHandler);
         };
 
-        $scope.init = function() {
+        $scope.init = function () {
+            console.log('$scope.init');
             $scope.readDictionaryTypes();
             if (angular.isDefined($routeParams.type)) {
                 $scope.currentType = $routeParams.type;

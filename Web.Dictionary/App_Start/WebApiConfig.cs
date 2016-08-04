@@ -5,6 +5,7 @@ using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Microsoft.Owin.Security.OAuth;
 using Web.Api.Common.Core.ExceptionHandling;
+using Web.Api.Common.Core.Filters;
 using Web.Api.Common.Core.Formatters;
 using Web.Api.Common.Core.Handler;
 
@@ -30,13 +31,14 @@ namespace Web.Dictionary
             bson.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/vnd.contoso"));
             config.Formatters.Add(bson);
 
-            //config.SuppressDefaultHostAuthentication();
-            //config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            config.SuppressDefaultHostAuthentication();
+            config.Filters.Add(new ApiKeyAuthenticationFilter());
+            config.Filters.Add(new ValidateModelFilter());
 
             config.Services.Replace(typeof(IExceptionHandler), new GlobalExecutionErrorHandler());
             config.Services.Add(typeof(IExceptionLogger), new GlobalExceptionLogger());
             config.MessageHandlers.Add(new LoggingHandler());
-            config.MessageHandlers.Add(new ApiKeyHandler());
+           
 
 
             // Web API configuration and services

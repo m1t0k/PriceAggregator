@@ -8,7 +8,7 @@ app.factory("dictionaryFactory",
         factory.baseUrl = "/Dictionary";
     
         factory.getList = function(type, pageIndex, pageSize, sortName, successHandler, errorHandler) {
-            factory.itemList = [];
+            console.log('get list ' + factory.baseUrl + "/" + type + "/list/count");
             return $http.get(factory.baseUrl +
                     "/" +
                     type +
@@ -25,7 +25,7 @@ app.factory("dictionaryFactory",
         };
 
         factory.getTypes = function (successHandler, errorHandler) {
-            return $http.get("/Dictionary/types", { withCredentials: true })
+            return $http.get(factory.baseUrl + "/types")
               .then(
                     function (response) { successHandler(response); },
                     function (response) { errorHandler(response); }
@@ -79,7 +79,8 @@ app.factory("dictionaryFactory",
                 );
         };
 
-        factory.getCount = function(type, successHandler, errorHandler) {
+        factory.getCount = function (type, successHandler, errorHandler) {
+            console.log('get count ' + factory.baseUrl + "/" + type + "/list/count");
             return $http.get(factory.baseUrl + "/" + type + "/list/count")
                 .then(
                     function(response) { successHandler(response); },

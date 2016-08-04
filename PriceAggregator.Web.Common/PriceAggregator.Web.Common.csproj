@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorizationPrivilegeFilter.cs" />
     <Compile Include="DynamicJsonBinder.cs" />
     <Compile Include="ModelStateValidatorFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

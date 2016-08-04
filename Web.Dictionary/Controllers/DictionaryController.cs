@@ -15,7 +15,7 @@ namespace Web.Dictionary.Controllers
 {
     [EnableCors("*", "*", "*", "*", SupportsCredentials = true)]
     [RoutePrefix("api/dictionary")]
-    //[Authorize]
+    [Authorize]
     public class DictionaryController : BaseController
     {
         private HttpResponseMessage DynamicExecute(string typeName, string methodName, object[] parameters,

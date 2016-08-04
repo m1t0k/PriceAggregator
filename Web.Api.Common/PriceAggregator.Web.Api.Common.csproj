@@ -62,17 +62,14 @@
     <Compile Include="Core\ExceptionHandling\GlobalExceptionLogger.cs" />
     <Compile Include="Core\ExceptionHandling\GlobalExecutionErrorHandler.cs" />
     <Compile Include="Core\ExceptionHandling\ShouldHandleExceptionHandler.cs" />
+    <Compile Include="Core\Filters\ApiKeyAuthenticationFilter.cs" />
     <Compile Include="Core\Filters\ObjectAlreadyExistsFilter.cs" />
     <Compile Include="Core\Filters\ObjectDoesNotExistFilter.cs" />
     <Compile Include="Core\Filters\ValidateModelFilter.cs" />
     <Compile Include="Core\Formatters\CsvFormater.cs" />
     <Compile Include="Core\Handler\LoggingHandler.cs" />
-    <Compile Include="Core\Handler\ApiKeyHandler.cs" />
     <Compile Include="Core\JsonContentNegotiator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj">
@@ -87,6 +84,9 @@
       <Project>{e0aa47a9-c365-4658-b509-64beefde6aca}</Project>
       <Name>PriceAggregator.Core.Logging.Inteface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
