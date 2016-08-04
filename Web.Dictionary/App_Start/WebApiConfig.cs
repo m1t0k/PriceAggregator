@@ -38,13 +38,14 @@ namespace Web.Dictionary
             config.MessageHandlers.Add(new LoggingHandler());
             config.MessageHandlers.Add(new ApiKeyHandler());
 
-            
+
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             ///config.SuppressDefaultHostAuthentication();
             ///config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             // Web API routes
+            
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(

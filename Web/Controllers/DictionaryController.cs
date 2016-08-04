@@ -123,8 +123,10 @@ namespace PriceAggregator.Web.Controllers
 
         [Route("{typeName:alpha}")]
         [HttpPost]
+        [ModelStateValidatorFilter]
         public async Task<ActionResult> Post(string typeName, [DynamicJson] dynamic item)
         {
+           
             var result = await _dictionaryRestClient.CreateItemAsync(typeName, item);
             return ParseActionResponse(result);
         }
@@ -132,8 +134,10 @@ namespace PriceAggregator.Web.Controllers
 
         [Route("{typeName:alpha}/{id:int}")]
         [HttpPut]
+        [ModelStateValidatorFilter]
         public async Task<ActionResult> Put(string typeName, int id, [DynamicJson] dynamic item)
         {
+            
             var result = await _dictionaryRestClient.UpdateItemAsync(typeName, id, item);
             return ParseActionResponse(result);
         }
