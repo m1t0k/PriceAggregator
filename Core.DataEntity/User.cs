@@ -7,6 +7,7 @@ namespace PriceAggregator.Core.DataEntity
     [Table("user", Schema = "public")]
     public class User
     {
+        [Key]
         [Column("id")]
         public int Id { get; set; }
 

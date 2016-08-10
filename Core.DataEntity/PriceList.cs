@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PriceAggregator.Core.DataEntity
@@ -7,6 +8,7 @@ namespace PriceAggregator.Core.DataEntity
     public class PriceList
     {
         [Column("id")]
+        [Key]
         public int Id { get; set; }
 
         [Column("retailerid")]

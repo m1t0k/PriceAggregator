@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using PriceAggregator.Core.DataEntity.Base;
 
@@ -18,6 +19,7 @@ namespace PriceAggregator.Core.DataAccess.Interfaces
 
         Task<IEnumerable<T>> GetListAsync(int? pageIndex, int? pageSize, string sortName, bool acsending);
         Task<IEnumerable<T>> SqlQueryAsync(string sqlQuery, params object[] parameters);
+        IQueryable<T> GetAll();
         Task<int> GetCountAsync();
         Task<T> GetItemAsync(int id);
         Task<int> CreateItemAsync(T item);

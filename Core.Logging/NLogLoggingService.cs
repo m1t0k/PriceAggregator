@@ -26,7 +26,7 @@ namespace PriceAggregator.Core.Logging
             AsyncWrapper(delegate
             {
                 var logEvent = GetLogEvent(LogLevel.Debug, exception, format, args);
-                Logger.Log(typeof(NLogLoggingService), logEvent);
+                Logger.Log(typeof (NLogLoggingService), logEvent);
             });
         }
 
@@ -43,7 +43,7 @@ namespace PriceAggregator.Core.Logging
             AsyncWrapper(delegate
             {
                 var logEvent = GetLogEvent(LogLevel.Error, exception, format, args);
-                Logger.Log(typeof(NLogLoggingService), logEvent);
+                Logger.Log(typeof (NLogLoggingService), logEvent);
             });
         }
 
@@ -59,7 +59,7 @@ namespace PriceAggregator.Core.Logging
             AsyncWrapper(delegate
             {
                 var logEvent = GetLogEvent(LogLevel.Fatal, exception, format, args);
-                Logger.Log(typeof(NLogLoggingService), logEvent);
+                Logger.Log(typeof (NLogLoggingService), logEvent);
             });
         }
 
@@ -75,7 +75,7 @@ namespace PriceAggregator.Core.Logging
             AsyncWrapper(delegate
             {
                 var logEvent = GetLogEvent(LogLevel.Info, exception, format, args);
-                Logger.Log(typeof(NLogLoggingService), logEvent);
+                Logger.Log(typeof (NLogLoggingService), logEvent);
             });
         }
 
@@ -90,7 +90,7 @@ namespace PriceAggregator.Core.Logging
             AsyncWrapper(delegate
             {
                 var logEvent = GetLogEvent(LogLevel.Trace, exception, format, args);
-                Logger.Log(typeof(NLogLoggingService), logEvent);
+                Logger.Log(typeof (NLogLoggingService), logEvent);
             });
         }
 
@@ -105,7 +105,7 @@ namespace PriceAggregator.Core.Logging
             AsyncWrapper(delegate
             {
                 var logEvent = GetLogEvent(LogLevel.Warn, exception, format, args);
-                Logger.Log(typeof(NLogLoggingService), logEvent);
+                Logger.Log(typeof (NLogLoggingService), logEvent);
             });
         }
 
@@ -151,12 +151,17 @@ namespace PriceAggregator.Core.Logging
             Warn(exception, string.Empty);
         }
 
-        private async void AsyncWrapper(LoggerDelagate func)
+        public void Dispose()
         {
-            lock (Logger)
+        }
+
+        private static async void AsyncWrapper(LoggerDelagate func)
+        {
+            await Task.Factory.StartNew(() =>
             {
-                Task.Run(() => func).ContinueWith(ExceptionHandling).ConfigureAwait(false);
-            }
+                func();
+                return true;
+            });
         }
 
         private void ExceptionHandling(Task task)
@@ -198,10 +203,5 @@ namespace PriceAggregator.Core.Logging
         }
 
         private delegate void LoggerDelagate();
-
-        public void Dispose()
-        {
-            
-        }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using CacheManager.Core;
 using PriceAggergator.Core.Logging.Inteface;
@@ -58,7 +59,7 @@ namespace PriceAggregator.Core.DictionaryProvider
                 if (item == null)
                     throw new ArgumentNullException(nameof(item));
 
-                var result=DbContext.CreateItem(item)>0;
+                var result = DbContext.CreateItem(item) > 0;
                 if (result && CacheManager.IsValueCreated)
                     CacheManager.Value.Add(GenerateKey(item.Id), item);
                 return result;
@@ -77,11 +78,11 @@ namespace PriceAggregator.Core.DictionaryProvider
                 if (item == null)
                     throw new ArgumentNullException(nameof(item));
 
-                var result=DbContext.UpdateItem(item)>0;
-                
-                    if (result && CacheManager.IsValueCreated)
-                        CacheManager.Value.AddOrUpdate(GenerateKey(item.Id), item, v => item);
-                
+                var result = DbContext.UpdateItem(item) > 0;
+
+                if (result && CacheManager.IsValueCreated)
+                    CacheManager.Value.AddOrUpdate(GenerateKey(item.Id), item, v => item);
+
                 return result;
             }
             catch (Exception e)
@@ -95,7 +96,7 @@ namespace PriceAggregator.Core.DictionaryProvider
         {
             try
             {
-                var result=DbContext.DeleteItem(id)>0;
+                var result = DbContext.DeleteItem(id) > 0;
                 if (result && CacheManager.IsValueCreated)
                     CacheManager.Value.Remove(GenerateKey(id));
                 return result;
@@ -114,6 +115,19 @@ namespace PriceAggregator.Core.DictionaryProvider
             {
                 var sortOptions = SplitSortExpression(sortExpression);
                 return await DbContext.GetListAsync(pageIndex, pageSize, sortOptions.Item1, sortOptions.Item2);
+            }
+            catch (Exception e)
+            {
+                LogError(e);
+                throw;
+            }
+        }
+
+        public IQueryable<T> GetAll()
+        {
+            try
+            {
+                return DbContext.GetAll();
             }
             catch (Exception e)
             {
@@ -211,7 +225,7 @@ namespace PriceAggregator.Core.DictionaryProvider
 
         protected virtual string GenerateKey(int itemId)
         {
-            return $"{typeof(T).FullName}:{itemId}";
+            return $"{typeof (T).FullName}:{itemId}";
         }
     }
 }

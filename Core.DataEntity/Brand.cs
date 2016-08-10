@@ -13,7 +13,7 @@ namespace PriceAggregator.Core.DataEntity
         [Display(Name = "Name" /*, ResourceType = typeof(Resources.Resources)*/)]
         public string Name { get; set; }
 
-        [Required]
+        
         [Column("description")]
         [Display(Name = "Description" /*,  ResourceType = typeof(Resources.Resources)*/)]
         public string Description { get; set; }

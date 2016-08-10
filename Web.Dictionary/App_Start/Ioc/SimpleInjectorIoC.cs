@@ -14,6 +14,7 @@ using PriceAggregator.Core.DictionaryProvider.Interfaces;
 using PriceAggregator.Core.Logging;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
+using Web.Dictionary.Controllers.Base;
 using Web.Dictionary.Models;
 
 namespace Web.Dictionary.Ioc
@@ -65,8 +66,9 @@ namespace Web.Dictionary.Ioc
                     () => factoryMethod.Invoke(container.GetInstance(redisFactoryType), null), Lifestyle.Singleton);
             }
            
+            container.Register<IDynamicExecutorHelper, DynamicExecutorHelper>(scope);
             container.Register<ISupportedDataEntities, SupportedDataEntities>(Lifestyle.Singleton);
-            container.Register<ILoggingService, NLogLoggingService>(scope);
+            container.Register<ILoggingService, NLogLoggingService>(Lifestyle.Singleton);
             container.Register(() => new Lazy<ILoggingService>(container.GetInstance<ILoggingService>), scope);
             container.Register(typeof(IDictionaryProvider<>), typeof(DictionaryProvider<>), scope);
             container.Register<ApplicationUser>(scope);

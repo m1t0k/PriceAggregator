@@ -118,6 +118,11 @@ namespace PriceAggregator.Core.DataAccess
                     .Take(pageSize.Value);
         }
 
+        public IQueryable<T> GetAll()
+        {
+            return Items.AsQueryable<T>();
+        }
+
         public IEnumerable<T> GetList(int? pageIndex, int? pageSize, string sortName,bool acsending)
         {
             return GetListInternal(pageIndex, pageSize, sortName, acsending).ToList();

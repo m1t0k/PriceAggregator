@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reflection;
 using System.Web.Http.Dependencies;
 using Newtonsoft.Json;
-using PriceAggregator.Core.DataEntity;
 using PriceAggregator.Core.DictionaryProvider.Interfaces;
 
 namespace Web.Dictionary.Controllers.Base
@@ -14,14 +13,14 @@ namespace Web.Dictionary.Controllers.Base
     {
         private readonly Type _type;
 
+        public Type Type => _type;
 
-        public DictionaryDynamicExecutor(string typeName, IEnumerable<Type> supportedTypes
-    )
+        public DictionaryDynamicExecutor(string typeName, IEnumerable<Type> supportedTypes)
         {
             if (string.IsNullOrWhiteSpace(typeName))
                 throw new ArgumentNullException(nameof(typeName));
 
-            if (supportedTypes==null)
+            if (supportedTypes == null)
                 throw new ArgumentNullException(nameof(supportedTypes));
 
             _type = supportedTypes
@@ -46,7 +45,7 @@ namespace Web.Dictionary.Controllers.Base
             if (string.IsNullOrWhiteSpace(methodName))
                 throw new ArgumentNullException(nameof(methodName));
 
-            var template = typeof(IDictionaryProvider<>);
+            var template = typeof (IDictionaryProvider<>);
             var genericType = template.MakeGenericType(_type);
             var method = genericType.GetMethod(methodName);
             if (method == null)
@@ -57,25 +56,25 @@ namespace Web.Dictionary.Controllers.Base
         }
 
 
-        public bool IsResultEmpty(object result)
+        public static bool IsResultEmpty(Type type, object result)
         {
             if (result == null || (result is bool && !(bool) result))
                 return true;
 
-            var genericCollectionTemplate = typeof(IEnumerable<>);
-            var genericCollectionType = genericCollectionTemplate.MakeGenericType(_type);
+            var genericCollectionTemplate = typeof (IEnumerable<>);
+            var genericCollectionType = genericCollectionTemplate.MakeGenericType(type);
             if (!genericCollectionType.IsInstanceOfType(result)) return false;
 
-            var anyMethod = typeof(Enumerable)
+            var anyMethod = typeof (Enumerable)
                 .GetMethods(BindingFlags.Static | BindingFlags.Public)
                 .FirstOrDefault(mi => mi.Name == "Any");
             // we need to specialize it 
-            if(anyMethod==null)
+            if (anyMethod == null)
                 throw new NullReferenceException(nameof(anyMethod));
-             
-            anyMethod = anyMethod.MakeGenericMethod(_type);
 
-            return !(bool) anyMethod.Invoke(null, new object[] {result});
+            anyMethod = anyMethod.MakeGenericMethod(type);
+
+            return !(bool) anyMethod.Invoke(null, new[] {result});
         }
     }
 }
