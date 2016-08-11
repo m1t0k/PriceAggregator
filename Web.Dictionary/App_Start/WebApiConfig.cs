@@ -12,7 +12,9 @@ using Web.Api.Common.Core.ExceptionHandling;
 using Web.Api.Common.Core.Filters;
 using Web.Api.Common.Core.Formatters;
 using Web.Api.Common.Core.Handler;
+using Web.Dictionary.Controllers;
 using Web.Dictionary.Ioc;
+using Web.Dictionary.Models;
 
 namespace Web.Dictionary
 {
@@ -48,59 +50,19 @@ namespace Web.Dictionary
             // New code:
             config.MapHttpAttributeRoutes();
 
-            /*ODataModelBuilder builder = new ODataConventionModelBuilder();
-            builder.EntitySet<Category>("CategorySet");
-            builder.EntitySet<Brand>("BrandSet");
-            */
-
             
-            //var dataEntities = SimpleInjectorIoC.GetDataEntities();
-
-            //var route = config.Routes.Where(r => r is ODataRoute).First();
-            //var odataRoute = route as ODataRoute;
-
             var builder = new ODataConventionModelBuilder();
-            // var baseMethod = builder.GetType().GetMethod("EntitySet");
-            //builder.EntitySet<Brand>("BrandSet");
-            // builder.EntitySet<Brand>("BrandSet");
-
-            builder.EntitySet<BaseEntity>("EntitySet");
-
-            //builder.EntitySet<Brand>("EntitySet");
-             builder.Function("GetEntitySet").ReturnsCollection<BaseEntity>()
-            //.ReturnsCollectionFromEntitySet<BaseEntity>("EntitySet")
-            .Parameter<string>("typeName");
-
-            //builder.EntitySet<Category>("CategorySet");
-            //builder.EntitySet<BaseEntity>("GetEntitySet");
-           
-            /*var types =new[] {"" };
-            foreach (var dataEntity in dataEntities)
-            {
-                //if (!dataEntity.IsDefined(typeof (KeyAttribute), true))
-                //    continue;
-                if(Array.FindIndex(types,item=>dataEntity.Name.Equals(item))<0)
-                    continue;
-                
-                var genericMethod = baseMethod.MakeGenericMethod(dataEntity);
-                genericMethod.Invoke(builder, new[] {$"{dataEntity.Name}Set"});
-                //builder.EnableLowerCamelCase();
-                //config.MapODataServiceRoute($"{dataEntity.Name.ToLower()}", "{dataEntity.Name.ToLower()}",
-                //    builder.GetEdmModel());
-            }*/
-
+      
+            var function= builder.Function("GetEntitySet").ReturnsCollection<BaseEntity>();
+            function.Parameter(typeof(string), "typeName");
+            builder.EntitySet<DictionaryType>("Types");
+            
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
                 routePrefix: "api/odata",
                 model: builder.GetEdmModel());
 
-            // Web API configuration and services
-            // Configure Web API to use only bearer token authentication.
-            ///config.SuppressDefaultHostAuthentication();
-            ///config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
-
-            // Web API routes
-
+            
             // config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
