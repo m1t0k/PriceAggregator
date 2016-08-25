@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Web.Http;
 using System.Web.OData;
 using System.Web.OData.Query;
 using System.Web.OData.Routing;
@@ -29,7 +30,7 @@ namespace Web.Dictionary.Controllers
         }
 
         [ODataRoute("GetEntitySet(typeName={typeName})")]
-        [EnableQuery(PageSize = 10, AllowedQueryOptions = AllowedQueryOptions.All,
+        [EnableQuery( AllowedQueryOptions = AllowedQueryOptions.All,
             AllowedOrderByProperties = "Id,Name", MaxNodeCount = 20)]
         public IQueryable<BaseEntity> GetEntitySet([FromODataUri] string typeName)
         {

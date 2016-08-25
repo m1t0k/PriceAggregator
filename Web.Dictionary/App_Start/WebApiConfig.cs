@@ -56,6 +56,12 @@ namespace Web.Dictionary
             var function= builder.Function("GetEntitySet").ReturnsCollection<BaseEntity>();
             function.Parameter(typeof(string), "typeName");
             builder.EntitySet<DictionaryType>("Types");
+
+            function= builder.Function("GetEntitySet").ReturnsCollection<BaseEntity>();
+            function.Parameter(typeof(string), "typeName");
+            function.Parameter(typeof(int), "id");
+
+            builder.EntitySet<DictionaryType>("Types");
             
             config.MapODataServiceRoute(
                 routeName: "ODataRoute",
