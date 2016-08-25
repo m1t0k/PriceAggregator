@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" InitialTargets="ValidateSolutionConfiguration;ValidateToolsVersions;ValidateProjects" DefaultTargets="Build">
+  <PropertyGroup>
+    <VCTargetsPath>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\</VCTargetsPath>
+    <VCTargetsPath10>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\</VCTargetsPath10>
+    <VCTargetsPath11>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V110\</VCTargetsPath11>
+    <VCTargetsPath12>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\</VCTargetsPath12>
+    <VCTargetsPath14>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\</VCTargetsPath14>
+    <MSBuildToolsPath32>C:\Program Files (x86)\MSBuild\14.0\bin\</MSBuildToolsPath32>
+    <MSBuildToolsRoot>C:\Program Files (x86)\MSBuild\</MSBuildToolsRoot>
+    <MSBuildFrameworkToolsPath>C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\</MSBuildFrameworkToolsPath>
+    <MSBuildFrameworkToolsPath32>C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\</MSBuildFrameworkToolsPath32>
+    <MSBuildFrameworkToolsRoot>C:\WINDOWS\Microsoft.NET\Framework\</MSBuildFrameworkToolsRoot>
+    <MSBuildRuntimeVersion>4.0.30319</MSBuildRuntimeVersion>
+    <FrameworkSDKRoot>C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\</FrameworkSDKRoot>
+    <SDK35ToolsPath>C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\</SDK35ToolsPath>
+    <SDK40ToolsPath>C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.6 Tools\</SDK40ToolsPath>
+    <iOSTargetsPath>C:\Program Files (x86)\MSBuild\Microsoft\MDD\iOS\V140\</iOSTargetsPath>
+    <AndroidTargetsPath>C:\Program Files (x86)\MSBuild\Microsoft\MDD\Android\V140\</AndroidTargetsPath>
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+    <WindowsSDK80Path>C:\Program Files (x86)\Windows Kits\8.1\</WindowsSDK80Path>
+    <AspNetConfiguration>Debug</AspNetConfiguration>
+    <SolutionDir>C:\Projects\PriceAggregator\</SolutionDir>
+    <SolutionExt>.sln</SolutionExt>
+    <SolutionFileName>PriceAggregator.DictionaryApi.sln</SolutionFileName>
+    <SolutionName>PriceAggregator.DictionaryApi</SolutionName>
+    <SolutionPath>C:\Projects\PriceAggregator\PriceAggregator.DictionaryApi.sln</SolutionPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <CurrentSolutionConfigurationContents>
+      <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{FBA3E581-95ED-417D-8629-E7946BC7D0FB}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{4507DE55-F459-4941-88EF-9D5C13DDD9C7}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{57D0F4D7-8D86-42C1-AC85-CC24A178C4FC}" AbsolutePath="C:\Projects\PriceAggregator\Core.Logging\PriceAggregator.Core.Logging.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{E0AA47A9-C365-4658-B509-64BEEFDE6ACA}" AbsolutePath="C:\Projects\PriceAggregator\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{B77BE544-4017-4783-8642-38707CCE40F8}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{C3498509-2E9D-434A-8456-075802C881C1}" AbsolutePath="C:\Projects\PriceAggregator\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{01DE9B73-58AF-45B1-AAEA-30F8A74654F4}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{EE69F1A5-E14A-44BD-998F-4CBBE2EE3F11}" AbsolutePath="C:\Projects\PriceAggregator\Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{CA1AF2EA-6ABA-4654-889C-8B6AF5552647}" AbsolutePath="C:\Projects\PriceAggregator\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{8A532BD5-425B-4AF3-9D92-E0407CE916AA}" AbsolutePath="C:\Projects\PriceAggregator\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{0ED161DB-7FEA-4120-8346-A0A6E3EAC1ED}" AbsolutePath="C:\Projects\PriceAggregator\Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{59CD6AD0-C39E-4D0C-8E66-BEDF5F2036E8}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}" AbsolutePath="C:\Projects\PriceAggregator\Web.Api.Common\PriceAggregator.Web.Api.Common.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+</SolutionConfiguration>
+    </CurrentSolutionConfigurationContents>
+  </PropertyGroup>
+  <ItemDefinitionGroup />
+  <ItemGroup>
+    <SolutionConfiguration Include="Debug|Any CPU">
+      <Configuration>Debug</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{FBA3E581-95ED-417D-8629-E7946BC7D0FB}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{4507DE55-F459-4941-88EF-9D5C13DDD9C7}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{57D0F4D7-8D86-42C1-AC85-CC24A178C4FC}" AbsolutePath="C:\Projects\PriceAggregator\Core.Logging\PriceAggregator.Core.Logging.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{E0AA47A9-C365-4658-B509-64BEEFDE6ACA}" AbsolutePath="C:\Projects\PriceAggregator\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{B77BE544-4017-4783-8642-38707CCE40F8}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{C3498509-2E9D-434A-8456-075802C881C1}" AbsolutePath="C:\Projects\PriceAggregator\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{01DE9B73-58AF-45B1-AAEA-30F8A74654F4}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{EE69F1A5-E14A-44BD-998F-4CBBE2EE3F11}" AbsolutePath="C:\Projects\PriceAggregator\Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{CA1AF2EA-6ABA-4654-889C-8B6AF5552647}" AbsolutePath="C:\Projects\PriceAggregator\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{8A532BD5-425B-4AF3-9D92-E0407CE916AA}" AbsolutePath="C:\Projects\PriceAggregator\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{0ED161DB-7FEA-4120-8346-A0A6E3EAC1ED}" AbsolutePath="C:\Projects\PriceAggregator\Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{59CD6AD0-C39E-4D0C-8E66-BEDF5F2036E8}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}" AbsolutePath="C:\Projects\PriceAggregator\Web.Api.Common\PriceAggregator.Web.Api.Common.csproj" BuildProjectInSolution="True">Debug|AnyCPU</ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+    <SolutionConfiguration Include="Release|Any CPU">
+      <Configuration>Release</Configuration>
+      <Platform>Any CPU</Platform>
+      <Content>
+        <SolutionConfiguration xmlns="">
+  <ProjectConfiguration Project="{FBA3E581-95ED-417D-8629-E7946BC7D0FB}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{4507DE55-F459-4941-88EF-9D5C13DDD9C7}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{57D0F4D7-8D86-42C1-AC85-CC24A178C4FC}" AbsolutePath="C:\Projects\PriceAggregator\Core.Logging\PriceAggregator.Core.Logging.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{E0AA47A9-C365-4658-B509-64BEEFDE6ACA}" AbsolutePath="C:\Projects\PriceAggregator\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{B77BE544-4017-4783-8642-38707CCE40F8}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{C3498509-2E9D-434A-8456-075802C881C1}" AbsolutePath="C:\Projects\PriceAggregator\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{01DE9B73-58AF-45B1-AAEA-30F8A74654F4}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{EE69F1A5-E14A-44BD-998F-4CBBE2EE3F11}" AbsolutePath="C:\Projects\PriceAggregator\Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{CA1AF2EA-6ABA-4654-889C-8B6AF5552647}" AbsolutePath="C:\Projects\PriceAggregator\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{8A532BD5-425B-4AF3-9D92-E0407CE916AA}" AbsolutePath="C:\Projects\PriceAggregator\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{0ED161DB-7FEA-4120-8346-A0A6E3EAC1ED}" AbsolutePath="C:\Projects\PriceAggregator\Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{59CD6AD0-C39E-4D0C-8E66-BEDF5F2036E8}" AbsolutePath="C:\Projects\PriceAggregator\Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+  <ProjectConfiguration Project="{B1C48A9A-F418-4D07-A53C-42CD90CA5D38}" AbsolutePath="C:\Projects\PriceAggregator\Web.Api.Common\PriceAggregator.Web.Api.Common.csproj" BuildProjectInSolution="True">Release|AnyCPU</ProjectConfiguration>
+</SolutionConfiguration>
+      </Content>
+    </SolutionConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.Logging\PriceAggregator.Core.Logging.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+    <ProjectReference Include="C:\Projects\PriceAggregator\Web.Api.Common\PriceAggregator.Web.Api.Common.csproj">
+      <ToolsVersion>
+      </ToolsVersion>
+      <SkipNonexistentProjects>False</SkipNonexistentProjects>
+      <AdditionalProperties>Configuration=Debug; Platform=AnyCPU</AdditionalProperties>
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectReference>
+  </ItemGroup>
+  <Target Name="ValidateSolutionConfiguration">
+    <Error Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' != 'true')" Text="указанная конфигурация решения &quot;$(Configuration)|$(Platform)&quot; недопустима. Укажите допустимую конфигурацию решения с помощью свойств Configuration и Platform (например, MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;) или оставьте эти свойства пустыми, чтобы использовать конфигурацию решения по умолчанию." Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" />
+    <Warning Condition="('$(CurrentSolutionConfigurationContents)' == '') and ('$(SkipInvalidConfigurations)' == 'true')" Text="указанная конфигурация решения &quot;$(Configuration)|$(Platform)&quot; недопустима. Укажите допустимую конфигурацию решения с помощью свойств Configuration и Platform (например, MSBuild.exe Solution.sln /p:Configuration=Debug /p:Platform=&quot;Any CPU&quot;) или оставьте эти свойства пустыми, чтобы использовать конфигурацию решения по умолчанию." Code="MSB4126" HelpKeyword="MSBuild.SolutionInvalidSolutionConfiguration" />
+    <Message Condition="'$(CurrentSolutionConfigurationContents)' != ''" Text="Создание конфигурации решения &quot;$(Configuration)|$(Platform)&quot;." />
+  </Target>
+  <Target Name="ValidateToolsVersions">
+    <Error Condition="'$(MSBuildToolsVersion)' == '2.0' and ('$(ProjectToolsVersion)' != '2.0' and '$(ProjectToolsVersion)' != '')" Text="версия инструментов &quot;$(MSBuildToolsVersion)&quot; решения не поддерживает проекты сборки с другой версией инструментов." Code="MSB4149" HelpKeyword="MSBuild.SolutionToolsVersionDoesNotSupportProjectToolsVersion" />
+  </Target>
+  <Target Name="ValidateProjects" />
+  <Target Name="GetSolutionConfigurationContents" Outputs="$(SolutionConfigurationContents)" />
+  <Target Name="Build" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Projects="@(ProjectReference)" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Clean">
+    <MSBuild Projects="@(ProjectReference-&gt;Reverse())" Targets="Clean" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="Rebuild" Outputs="@(CollectedBuildOutput)">
+    <MSBuild Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)">
+      <Output TaskParameter="TargetOutputs" ItemName="CollectedBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="Publish">
+    <MSBuild Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" Properties="BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" SkipNonexistentProjects="%(ProjectReference.SkipNonexistentProjects)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataEntity" Outputs="@(PriceAggregator_Core_DataEntityBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataEntityBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataEntity:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataEntity:Rebuild" Outputs="@(PriceAggregator_Core_DataEntityBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataEntityBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataEntity:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataEntity\PriceAggregator.Core.DataEntity.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess" Outputs="@(PriceAggregator_Core_DataAccessBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataAccessBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess:Rebuild" Outputs="@(PriceAggregator_Core_DataAccessBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataAccessBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess\PriceAggregator.Core.DataAccess.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_Logging" Outputs="@(PriceAggregator_Core_LoggingBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Logging\PriceAggregator.Core.Logging.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_LoggingBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_Logging:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Logging\PriceAggregator.Core.Logging.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_Logging:Rebuild" Outputs="@(PriceAggregator_Core_LoggingBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Logging\PriceAggregator.Core.Logging.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_LoggingBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_Logging:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Logging\PriceAggregator.Core.Logging.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_Logging_Inteface" Outputs="@(PriceAggregator_Core_Logging_IntefaceBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_Logging_IntefaceBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_Logging_Inteface:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_Logging_Inteface:Rebuild" Outputs="@(PriceAggregator_Core_Logging_IntefaceBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_Logging_IntefaceBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_Logging_Inteface:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Logging.Inteface\PriceAggregator.Core.Logging.Inteface.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataEntity_Base" Outputs="@(PriceAggregator_Core_DataEntity_BaseBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataEntity_BaseBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataEntity_Base:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataEntity_Base:Rebuild" Outputs="@(PriceAggregator_Core_DataEntity_BaseBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataEntity_BaseBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataEntity_Base:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataEntity.Base\PriceAggregator.Core.DataEntity.Base.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_Exceptions" Outputs="@(PriceAggregator_Core_ExceptionsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_ExceptionsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_Exceptions:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_Exceptions:Rebuild" Outputs="@(PriceAggregator_Core_ExceptionsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_ExceptionsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_Exceptions:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.Exceptions\PriceAggregator.Core.Exceptions.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess_Interfaces" Outputs="@(PriceAggregator_Core_DataAccess_InterfacesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataAccess_InterfacesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess_Interfaces:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess_Interfaces:Rebuild" Outputs="@(PriceAggregator_Core_DataAccess_InterfacesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataAccess_InterfacesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess_Interfaces:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess.Interfaces\PriceAggregator.Core.DataAccess.Interfaces.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DictionaryProvider" Outputs="@(PriceAggregator_Core_DictionaryProviderBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DictionaryProviderBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DictionaryProvider:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DictionaryProvider:Rebuild" Outputs="@(PriceAggregator_Core_DictionaryProviderBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DictionaryProviderBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DictionaryProvider:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DictionaryProvider\PriceAggregator.Core.DictionaryProvider.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DictionaryProvider_Interfaces" Outputs="@(PriceAggregator_Core_DictionaryProvider_InterfacesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DictionaryProvider_InterfacesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DictionaryProvider_Interfaces:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DictionaryProvider_Interfaces:Rebuild" Outputs="@(PriceAggregator_Core_DictionaryProvider_InterfacesBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DictionaryProvider_InterfacesBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DictionaryProvider_Interfaces:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DictionaryProvider.Interfaces\PriceAggregator.Core.DictionaryProvider.Interfaces.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Web_Dictionary" Outputs="@(PriceAggregator_Web_DictionaryBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Web_DictionaryBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Web_Dictionary:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Web_Dictionary:Rebuild" Outputs="@(PriceAggregator_Web_DictionaryBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Web_DictionaryBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Web_Dictionary:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Dictionary\PriceAggregator.Web.Dictionary.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Web_Dictionary_Tests" Outputs="@(PriceAggregator_Web_Dictionary_TestsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Web_Dictionary_TestsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Web_Dictionary_Tests:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Web_Dictionary_Tests:Rebuild" Outputs="@(PriceAggregator_Web_Dictionary_TestsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Web_Dictionary_TestsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Web_Dictionary_Tests:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Dictionary.Tests\PriceAggregator.Web.Dictionary.Tests.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess_Tests" Outputs="@(PriceAggregator_Core_DataAccess_TestsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataAccess_TestsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess_Tests:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess_Tests:Rebuild" Outputs="@(PriceAggregator_Core_DataAccess_TestsBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Core_DataAccess_TestsBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Core_DataAccess_Tests:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Core.DataAccess.Tests\PriceAggregator.Core.DataAccess.Tests.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Web_Api_Common" Outputs="@(PriceAggregator_Web_Api_CommonBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Api.Common\PriceAggregator.Web.Api.Common.csproj'" Projects="@(ProjectReference)" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Web_Api_CommonBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Web_Api_Common:Clean">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Api.Common\PriceAggregator.Web.Api.Common.csproj'" Projects="@(ProjectReference)" Targets="Clean" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+  <Target Name="PriceAggregator_Web_Api_Common:Rebuild" Outputs="@(PriceAggregator_Web_Api_CommonBuildOutput)">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Api.Common\PriceAggregator.Web.Api.Common.csproj'" Projects="@(ProjectReference)" Targets="Rebuild" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)">
+      <Output TaskParameter="TargetOutputs" ItemName="PriceAggregator_Web_Api_CommonBuildOutput" />
+    </MSBuild>
+  </Target>
+  <Target Name="PriceAggregator_Web_Api_Common:Publish">
+    <MSBuild Condition="'%(ProjectReference.Identity)' == 'C:\Projects\PriceAggregator\Web.Api.Common\PriceAggregator.Web.Api.Common.csproj'" Projects="@(ProjectReference)" Targets="Publish" BuildInParallel="True" ToolsVersion="$(ProjectToolsVersion)" Properties="Configuration=Debug; Platform=AnyCPU;BuildingSolutionFile=true; CurrentSolutionConfigurationContents=$(CurrentSolutionConfigurationContents); SolutionDir=$(SolutionDir); SolutionExt=$(SolutionExt); SolutionFileName=$(SolutionFileName); SolutionName=$(SolutionName); SolutionPath=$(SolutionPath)" />
+  </Target>
+</Project>
